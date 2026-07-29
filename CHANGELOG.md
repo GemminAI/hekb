@@ -5,6 +5,33 @@ All notable changes to HEKB are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-07-29
+
+Recovery release. `v1.0.0` was tagged against a repository bootstrap
+commit (`LICENSE` + `README.md` only, from the pre-release scaffolding
+step) before the actual v1.0 source tree had been pushed to `main`.
+This release corrects that: the intended implementation, previously
+only reachable via the `recovery/hekb-v1-refresh` branch, is now
+merged into `main` and is what `v1.0.1` points to.
+
+### Fixed
+
+- Canonical repository restored: `main` now contains the complete
+  HEKB v1.0 source tree (`src/`, `tests/`, `docs/`, `examples/`,
+  `pyproject.toml`) instead of the stray bootstrap commit.
+- GitHub Actions restored: `.github/workflows/python.yml` (ruff, mypy
+  strict, pytest across Python 3.12/3.13 via `uv`), which had been
+  temporarily removed to work around a token missing the `workflow`
+  OAuth scope.
+- Packaging and repository history corrected; no functional regressions
+  from `v1.0.0`'s intended scope.
+
+### Not changed
+
+- No API changes.
+- No behavioral changes to the category-theoretic core, storage
+  boundary, or runtime facade.
+
 ## [1.0.0] - 2026-07-29
 
 First public OSS release of HEKB: the knowledge layer of the HEXT
