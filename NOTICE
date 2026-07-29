@@ -1,0 +1,10 @@
+HEKB
+Copyright 2026 Gemmina Intelligence LLC.
+
+This product is licensed under the Apache License, Version 2.0.
+See the LICENSE file for the full license text.
+
+HEKB is the knowledge-storage layer of the HEXT ecosystem. It has no
+runtime dependency on any other component of that ecosystem (HEXT,
+SensOS, NVS-Kernel) and can be used, built, and tested entirely on its
+own.
