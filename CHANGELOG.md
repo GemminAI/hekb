@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — EXP-HEKB004 multi-modal ingestion (design-stage only, implementation paused)
+
+`experiments/_observation_bundle.py` (Observation Bundle data model and
+typed-morphism vocabulary), `experiments/_multimodal_corpus.py` (the
+9-work catalog and real corpus directory contract/discovery scan),
+`experiments/_multimodal_extractors.py` (per-modality extractor
+`Protocol` boundaries, no fabricated bodies), and
+`experiments/_cross_modal_reconstruction.py` (the Cross-Modal
+Reconstruction Engine, reusing EXP-HEKB002's `_semantic_closure.compute_closure`
+unmodified — no vector or embedding search).
+
+A real-filesystem audit found no real audio, score, or subtitle file, and
+no composer/work-specific critique or theory text, for any of the 9
+target works this experiment's specification names. Per the
+specification's own "do not fabricate" instruction and explicit direction
+from the requester, ingestion of the real 3x3 test matrix is **paused**;
+none of the specification's 8 target metrics were measured. See
+`docs/RFC_ALIGNMENT.md` ("EXP-HEKB004: multi-modal ingestion,
+design-stage only") and `experiments/EXP-HEKB004/report.md` for the full
+record, including the abstract, non-musical `mechanism_verification`
+self-check that confirms the reconstruction engine's wiring is correct
+independent of any real corpus. `src/hekb` is unmodified.
+
 ### Added — EXP archival: EXP-HEKB001, EXP-HEKB002, EXP-HEKB003 knowledge artifacts
 
 `experiments/EXP-HEKB001/`, `experiments/EXP-HEKB002/`,

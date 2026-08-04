@@ -349,3 +349,87 @@ implementation code, consistent with this repository's own subject matter.
 The findings above are the canonical record; the per-EXP `report.md` files
 restate them alongside quantitative metrics and reproduction instructions
 for that specific experiment.
+
+## EXP-HEKB004: multi-modal ingestion, design-stage only (2026-08-05)
+
+EXP-HEKB004's specification (v1.3.0, `experiments/EXP-HEKB004/specification.md`)
+asks for a real 3-composer x 3-work x 5-modality corpus (audio, score,
+critique, Wikipedia text, subtitles; 45+ observation points) to be
+ingested and shown to converge, via typed morphisms and pullback/pushout
+alone, onto shared HEKB objects, plus a Cross-Modal Reconstruction Engine
+recovering a full Observation Bundle from a single modality.
+
+**Repository audit finding**: a real-filesystem search of this workspace
+(`/media/psf/SSD1TB`, depth 6, extensions `.mp3 .wav .musicxml .mid .midi
+.vtt .mxl .xml .srt .flac .opus .m4a`) found **no real audio, score, or
+subtitle file, and no composer/work-specific critique or theory text, for
+any of the 9 target works**. This is a repository-boundary finding, not
+an implementation gap: there is nothing to ingest yet.
+
+**Scope decision** (per the specification's own "do not fabricate"
+instruction, and confirmed by explicit direction from the requester):
+implementation stopped at the design layer — data model
+(`_observation_bundle.py`), the real corpus directory contract and
+discovery scan (`_multimodal_corpus.py`), per-modality extractor
+`Protocol` boundaries (`_multimodal_extractors.py`, with
+`NotImplementedError` reference stubs rather than fabricated bodies), and
+the Cross-Modal Reconstruction Engine (`_cross_modal_reconstruction.py`).
+No corpus was invented to exercise Stage 3+ against. See
+`experiments/EXP-HEKB004/report.md` for the full record.
+
+### Reused unmodified
+
+- `_semantic_closure.compute_closure` (EXP-HEKB002) — the reconstruction
+  engine's only job is reshaping its real output into the specification's
+  §VI payload shape; no new retrieval algorithm was added, no vector or
+  embedding search anywhere.
+- `_semantic_search.py` (EXP-HEKB003) — not called in this design-stage
+  run (no ingested corpus to search), but no changes were made to it and
+  none are anticipated once a real corpus exists.
+- The `msr.abi.MeaningMeasurement`-stream substitution convention for
+  meaning-mapper (EXP-HEKB002/003) — documented as the plan for real
+  audio/score content once available, not exercised here.
+
+### Design decisions recorded
+
+- Morphism direction follows the specification's own diagram: each
+  observation morphism points **from** the observation **to** the Target
+  Object Q (`Audio --acoustically_realizes--> Q`, etc.), so recovering an
+  Observation Bundle for a resolved Q is exactly `compute_closure`'s
+  pushout direction (objects pointing at the query) — verified, not
+  assumed, by `mechanism_verification` in
+  `exp_hekb_004_multimodal_convergence.py`, using abstract
+  `MechanismTest_*` identifiers explicitly labeled as not real music.
+- `InvariantSignature.homotopy_hash`/`betti_numbers` stay `None` —
+  `cle.homotopy` is still Protocol-only, same gap EXP-HEKB002/003 already
+  recorded; nothing was invented to fill either field here either.
+- The typed-morphism *type* (`acoustically_realizes`, `formally_defines`,
+  `interprets`, `documents`, `transcribes`, `creates`, `contains`,
+  `manifests`) stays a side table (`relation_kind: dict[str, str]`), not a
+  new field on `hekb.models.KnowledgeRelation` — same boundary call as
+  EXP-HEKB002/003; `src/hekb` was not touched.
+
+### Validation metrics
+
+None of the specification's 8 target metrics (`R_convergence`, `Y_bundle`,
+`F_convergence`, `P_invariant`, `R_reconstruct`, hierarchy resolution,
+`C(Q)`, `tau_multimodal`) were measured — all require real multi-modal
+observations that do not exist in this workspace. Reporting a number for
+any of them would be fabrication. What was measured, honestly:
+
+| Property | Result |
+|---|---|
+| Real corpus discovery | 0 / 45 observation points present, across all 9 works |
+| Mechanism verification (abstract, non-musical fixture) | Pass — the reconstruction engine correctly recovered both fixture observations for the fixture target via a real pushout closure |
+| Overall experiment | `"pass": false` — honestly reported as blocked, not failed |
+
+Full results: `experiments/results/exp_hekb_004.json`.
+
+### Gap analysis summary
+
+| Priority | Finding |
+|---|---|
+| A (implementation defect) | None found. |
+| B (spec doesn't match implementation) | None — `specification.md`'s own "Implementation Status" section documents the scope reduction. |
+| C (architectural decision, open) | Whether real audio/score/subtitle extraction should depend on a third-party library (`music21`, `soundfile`, `webvtt-py`) once real files exist, given this repository's `dependencies = []` convention. |
+| D (future experiment) | Real audio/score/subtitle/critique corpus for the 9 target works (blocking); real Graphify; real MCP transport; real homotopy algorithm — all unchanged, open gaps from EXP-HEKB001-003, none newly introduced here. |

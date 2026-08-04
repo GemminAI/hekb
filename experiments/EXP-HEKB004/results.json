@@ -1,0 +1,407 @@
+{
+  "experiment": "EXP-HEKB004",
+  "scope": "Design-stage only: Observation Bundle model, typed-morphism vocabulary, real corpus directory contract, per-modality extractor Protocols, and the Cross-Modal Reconstruction Engine (reusing _semantic_closure.compute_closure from EXP-HEKB002 unmodified). No vector/embedding search anywhere. src/hekb not modified.",
+  "uncaught_exception": null,
+  "stage1_corpus_discovery": {
+    "root": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus",
+    "total_expected": 45,
+    "total_present": 0,
+    "works": [
+      {
+        "composer": "Ludwig van Beethoven",
+        "work": "Symphony No. 5 in C minor, Op. 67",
+        "work_slug": "symphony_no5",
+        "complete": false,
+        "present_count": 0,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "Audio",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no5/audio.mp3",
+            "present": false
+          },
+          {
+            "modality": "Score",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no5/score.musicxml",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no5/wiki.md",
+            "present": false
+          },
+          {
+            "modality": "Critique",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no5/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Subtitle",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no5/subtitle.vtt",
+            "present": false
+          }
+        ]
+      },
+      {
+        "composer": "Ludwig van Beethoven",
+        "work": "Piano Sonata No. 14, Op. 27 No. 2 (\"Moonlight\")",
+        "work_slug": "moonlight_sonata",
+        "complete": false,
+        "present_count": 0,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "Audio",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/moonlight_sonata/audio.mp3",
+            "present": false
+          },
+          {
+            "modality": "Score",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/moonlight_sonata/score.musicxml",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/moonlight_sonata/wiki.md",
+            "present": false
+          },
+          {
+            "modality": "Critique",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/moonlight_sonata/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Subtitle",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/moonlight_sonata/subtitle.vtt",
+            "present": false
+          }
+        ]
+      },
+      {
+        "composer": "Ludwig van Beethoven",
+        "work": "Symphony No. 9 in D minor, Op. 125 (\"Choral\")",
+        "work_slug": "symphony_no9",
+        "complete": false,
+        "present_count": 0,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "Audio",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no9/audio.mp3",
+            "present": false
+          },
+          {
+            "modality": "Score",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no9/score.musicxml",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no9/wiki.md",
+            "present": false
+          },
+          {
+            "modality": "Critique",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no9/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Subtitle",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/beethoven/symphony_no9/subtitle.vtt",
+            "present": false
+          }
+        ]
+      },
+      {
+        "composer": "Wolfgang Amadeus Mozart",
+        "work": "Eine kleine Nachtmusik, K. 525",
+        "work_slug": "eine_kleine_nachtmusik",
+        "complete": false,
+        "present_count": 0,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "Audio",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/eine_kleine_nachtmusik/audio.mp3",
+            "present": false
+          },
+          {
+            "modality": "Score",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/eine_kleine_nachtmusik/score.musicxml",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/eine_kleine_nachtmusik/wiki.md",
+            "present": false
+          },
+          {
+            "modality": "Critique",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/eine_kleine_nachtmusik/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Subtitle",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/eine_kleine_nachtmusik/subtitle.vtt",
+            "present": false
+          }
+        ]
+      },
+      {
+        "composer": "Wolfgang Amadeus Mozart",
+        "work": "Requiem in D minor, K. 626",
+        "work_slug": "requiem",
+        "complete": false,
+        "present_count": 0,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "Audio",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/requiem/audio.mp3",
+            "present": false
+          },
+          {
+            "modality": "Score",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/requiem/score.musicxml",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/requiem/wiki.md",
+            "present": false
+          },
+          {
+            "modality": "Critique",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/requiem/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Subtitle",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/requiem/subtitle.vtt",
+            "present": false
+          }
+        ]
+      },
+      {
+        "composer": "Wolfgang Amadeus Mozart",
+        "work": "Piano Concerto No. 21, K. 467",
+        "work_slug": "piano_concerto_no21",
+        "complete": false,
+        "present_count": 0,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "Audio",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/piano_concerto_no21/audio.mp3",
+            "present": false
+          },
+          {
+            "modality": "Score",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/piano_concerto_no21/score.musicxml",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/piano_concerto_no21/wiki.md",
+            "present": false
+          },
+          {
+            "modality": "Critique",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/piano_concerto_no21/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Subtitle",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/mozart/piano_concerto_no21/subtitle.vtt",
+            "present": false
+          }
+        ]
+      },
+      {
+        "composer": "Johann Sebastian Bach",
+        "work": "Air on the G String (Orchestral Suite No. 3, BWV 1068)",
+        "work_slug": "air_on_the_g_string",
+        "complete": false,
+        "present_count": 0,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "Audio",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/air_on_the_g_string/audio.mp3",
+            "present": false
+          },
+          {
+            "modality": "Score",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/air_on_the_g_string/score.musicxml",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/air_on_the_g_string/wiki.md",
+            "present": false
+          },
+          {
+            "modality": "Critique",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/air_on_the_g_string/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Subtitle",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/air_on_the_g_string/subtitle.vtt",
+            "present": false
+          }
+        ]
+      },
+      {
+        "composer": "Johann Sebastian Bach",
+        "work": "Toccata and Fugue in D minor, BWV 565",
+        "work_slug": "toccata_and_fugue",
+        "complete": false,
+        "present_count": 0,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "Audio",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/toccata_and_fugue/audio.mp3",
+            "present": false
+          },
+          {
+            "modality": "Score",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/toccata_and_fugue/score.musicxml",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/toccata_and_fugue/wiki.md",
+            "present": false
+          },
+          {
+            "modality": "Critique",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/toccata_and_fugue/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Subtitle",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/toccata_and_fugue/subtitle.vtt",
+            "present": false
+          }
+        ]
+      },
+      {
+        "composer": "Johann Sebastian Bach",
+        "work": "Well-Tempered Clavier, Book 1, Prelude No. 1, BWV 846",
+        "work_slug": "wtc1_prelude1",
+        "complete": false,
+        "present_count": 0,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "Audio",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/wtc1_prelude1/audio.mp3",
+            "present": false
+          },
+          {
+            "modality": "Score",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/wtc1_prelude1/score.musicxml",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/wtc1_prelude1/wiki.md",
+            "present": false
+          },
+          {
+            "modality": "Critique",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/wtc1_prelude1/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Subtitle",
+            "expected_path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB004/corpus/bach/wtc1_prelude1/subtitle.vtt",
+            "present": false
+          }
+        ]
+      }
+    ]
+  },
+  "phase_1_beethoven_convergence": {
+    "phase": "Phase 1: Beethoven 3-work convergence (R_convergence)",
+    "status": "blocked_on_real_corpus",
+    "reason": "no real audio (.mp3/.wav), score (.musicxml/.mid), or subtitle (.vtt) file, and no composer/work-specific critique or theory text, exists anywhere in this workspace for any of the 9 target works. Per this experiment's own 'do not fabricate' instruction and explicit direction from the requester, ingestion is paused until a real corpus is supplied under the contract in experiments/EXP-HEKB004/corpus/README.md.",
+    "pass": false
+  },
+  "phase_2_cross_composer_validation": {
+    "phase": "Phase 2: 3-composer false-convergence & cross-subject retrieval (F_convergence, P_invariant)",
+    "status": "blocked_on_real_corpus",
+    "reason": "no real audio (.mp3/.wav), score (.musicxml/.mid), or subtitle (.vtt) file, and no composer/work-specific critique or theory text, exists anywhere in this workspace for any of the 9 target works. Per this experiment's own 'do not fabricate' instruction and explicit direction from the requester, ingestion is paused until a real corpus is supplied under the contract in experiments/EXP-HEKB004/corpus/README.md.",
+    "pass": false
+  },
+  "phase_3_cross_modal_reconstruction": {
+    "phase": "Phase 3: Cross-Modal Reconstruction Tests A-D (R_reconstruct, tau_multimodal, C(Q))",
+    "status": "blocked_on_real_corpus",
+    "reason": "no real audio (.mp3/.wav), score (.musicxml/.mid), or subtitle (.vtt) file, and no composer/work-specific critique or theory text, exists anywhere in this workspace for any of the 9 target works. Per this experiment's own 'do not fabricate' instruction and explicit direction from the requester, ingestion is paused until a real corpus is supplied under the contract in experiments/EXP-HEKB004/corpus/README.md.",
+    "pass": false
+  },
+  "mechanism_verification": {
+    "note": "abstract mechanism correctness check, not real musical data",
+    "payload": {
+      "query": {
+        "raw_input": "mechanism-self-check",
+        "input_modality": "MechanismTest",
+        "resolved_target_id": "MechanismTest_Q"
+      },
+      "target_object": {
+        "id": "MechanismTest_Q",
+        "canonical_name": "Mechanism Test Target -- not a real work",
+        "hierarchy": {
+          "composer": "N/A (mechanism test)",
+          "work": "N/A (mechanism test)",
+          "movement": null,
+          "measures": null
+        },
+        "invariant_signature": null
+      },
+      "observation_bundle": [
+        {
+          "modality": "Audio",
+          "source_id": "mechanism-test-fixture (not a real audio file)",
+          "slice": {
+            "time_range_s": [
+              0.0,
+              1.0
+            ],
+            "sample_rate": null
+          },
+          "morphism_type": "acoustically_realizes"
+        },
+        {
+          "modality": "Score",
+          "source_id": "mechanism-test-fixture (not a real score file)",
+          "slice": {
+            "measure_range": "1-1",
+            "clef": null,
+            "key_signature": null
+          },
+          "morphism_type": "formally_defines"
+        }
+      ],
+      "cross_subject_invariants": [],
+      "proof_path": [
+        "mechanism-self-check"
+      ],
+      "search_metrics": {
+        "reality_convergence_score": null,
+        "reconstruction_accuracy": null,
+        "false_convergence_rate": null,
+        "context_economy_ratio": 1.0,
+        "execution_time_ms": 0.026166999305132776
+      }
+    },
+    "bundle_complete": true,
+    "closure_is_minimal_self_contained": true,
+    "latency_measured_ms": 0.026166999305132776,
+    "pass": true
+  },
+  "blocked_reason": "no real audio (.mp3/.wav), score (.musicxml/.mid), or subtitle (.vtt) file, and no composer/work-specific critique or theory text, exists anywhere in this workspace for any of the 9 target works. Per this experiment's own 'do not fabricate' instruction and explicit direction from the requester, ingestion is paused until a real corpus is supplied under the contract in experiments/EXP-HEKB004/corpus/README.md.",
+  "pass": false
+}
