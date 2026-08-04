@@ -51,7 +51,11 @@ class FileConceptStore:
         self._root.mkdir(parents=True, exist_ok=True)
 
     def _path_for(self, concept_id: str) -> Path:
-        return self._root / f"{concept_id}.json"
+        # EXP-HEKB003 introduces real, path-shaped concept ids (e.g.
+        # "msr/src/msr/abi.py") — "/" would otherwise be read as nested
+        # directories `_root.mkdir` never created. The stored record's own
+        # "id" field is untouched; only the on-disk filename is escaped.
+        return self._root / f"{concept_id.replace('/', '__')}.json"
 
     def write(self, concept: Concept) -> None:
         record: dict[str, Any] = {

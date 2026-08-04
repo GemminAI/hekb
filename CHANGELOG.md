@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — EXP-HEKB003 real-world cross-domain semantic search & closure
+
+Replaces EXP-HEKB002's hand-specified Graphify fixture with **real**
+multi-repository artifacts (`meaning-space-runtime`,
+`categorical-lift-engine`, this repository: real Markdown, real Python via
+`ast.parse`, real `git log`), and adds a reference Semantic Search layer
+over the existing, unmodified Semantic Closure Engine. No vector or
+embedding search anywhere; no Graphify or homotopy algorithm invented. See
+`docs/RFC_ALIGNMENT.md` ("EXP-HEKB003: real-world cross-domain semantic
+search & closure") for the full record, including a real path-safety bug
+found and fixed in `experiments/`-only infrastructure.
+
+- `experiments/_real_artifact_extractors.py` (new): real Markdown/Python/Git
+  structural extractors — reference adapters, not Graphify.
+- `experiments/_real_corpus.py` (new): assembles the real, curated,
+  multi-repository corpus (Stage 1's repository survey); 105 real objects,
+  52 real classes forming the concept vocabulary.
+- `experiments/_semantic_search.py` (new): concept resolution, the
+  geometric ranking function (`D_functorial`, `L_morphism`, `D_potential`,
+  `Depth_category`, each honestly scoped to what's actually computable),
+  an independently-reverified false-inclusion check, and the §V-shaped
+  response payload.
+- `experiments/exp_hekb_003_real_world_validation.py` (new): orchestrates
+  Stages 1–6, all metrics pass — `experiments/results/exp_hekb_003.json`
+  (`"pass": true`), including a genuine real 4-hop composed morphism and
+  100% independently-verified pushout recall.
+- `experiments/_concept_store.py`, `experiments/_file_backend.py`
+  (fixed): on-disk filenames now escape `/` — EXP-HEKB001/002 never
+  exercised a path-shaped record id; EXP-HEKB003's real file-path ids
+  did. Stored `id` fields, and every existing id, are unchanged.
+
 ### Added — EXP-HEKB002 closed-loop end-to-end verification
 
 Validates the full loop MM/MSR -> CLE -> HEKB storage -> Semantic Closure

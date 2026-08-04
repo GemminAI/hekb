@@ -75,7 +75,12 @@ class FileProjectionBackend:
         self._root.mkdir(parents=True, exist_ok=True)
 
     def _path_for(self, record_id: str) -> Path:
-        return self._root / f"{record_id}.json"
+        # EXP-HEKB003 introduces real, path-shaped morphism ids (e.g.
+        # "msr/src/msr/abi.py_implements_MeaningMeasurement") — "/" would
+        # otherwise be read as nested directories `_root.mkdir` never
+        # created. The stored record's own "morphism_id" field is
+        # untouched; only the on-disk filename is escaped.
+        return self._root / f"{record_id.replace('/', '__')}.json"
 
     def write(self, profile: StorageProfile) -> None:
         record_id = _record_id(profile)

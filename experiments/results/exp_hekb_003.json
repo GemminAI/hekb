@@ -1,0 +1,641 @@
+{
+  "experiment": "EXP-HEKB003",
+  "scope": "Real multi-repository artifacts (meaning-space-runtime, categorical-lift-engine, this repository): real Markdown, real Python (ast.parse), real git log. Graphify does not exist in this workspace -- _real_artifact_extractors.py are reference extractors, not Graphify. No vector/embedding search anywhere.",
+  "uncaught_exception": null,
+  "stage1_survey": {
+    "repositories": [
+      "msr",
+      "cle",
+      "hekb"
+    ],
+    "markdown_files": [
+      "msr/RFC-MSR01.md",
+      "msr/docs/RFC_ALIGNMENT.md",
+      "msr/docs/ARCHITECTURE.md",
+      "msr/docs/BOUNDARIES.md",
+      "cle/docs/RFC_ALIGNMENT.md",
+      "cle/docs/ARCHITECTURE.md",
+      "cle/docs/BOUNDARIES.md",
+      "hekb/docs/architecture.md",
+      "hekb/docs/api.md",
+      "hekb/docs/RFC_ALIGNMENT.md"
+    ],
+    "python_files": [
+      "msr/src/msr/abi.py",
+      "msr/src/msr/field.py",
+      "msr/src/msr/dynamics.py",
+      "msr/src/msr/runtime.py",
+      "msr/src/msr/host.py",
+      "msr/src/msr/stability.py",
+      "msr/src/msr/errors.py",
+      "msr/src/msr/reference.py",
+      "msr/src/msr/adapters/hekb.py",
+      "cle/src/cle/abi/outputs.py",
+      "cle/src/cle/abi/inputs.py",
+      "cle/src/cle/categorical_lift/engine.py",
+      "cle/src/cle/errors.py",
+      "hekb/src/hekb/category.py",
+      "hekb/src/hekb/models.py",
+      "hekb/src/hekb/runtime.py",
+      "hekb/src/hekb/storage.py"
+    ],
+    "commit_targets": [
+      "msr/src/msr/abi.py",
+      "msr/src/msr/runtime.py",
+      "cle/src/cle/categorical_lift/engine.py",
+      "hekb/src/hekb/category.py"
+    ],
+    "vocabulary_size": 52
+  },
+  "stage4_5_searches": {
+    "queries": [
+      "MeaningMeasurement",
+      "msr/docs/BOUNDARIES.md",
+      "concept-55ca929b1a41bad1"
+    ],
+    "exceptions": [],
+    "cross_domain_traversal_yield": true,
+    "max_composition_depth": 4,
+    "results": {
+      "MeaningMeasurement": {
+        "query": {
+          "raw_term": "MeaningMeasurement",
+          "resolved_concept_id": "MeaningMeasurement"
+        },
+        "search_metrics": {
+          "composition_depth": 0,
+          "false_inclusion_rate": 0.0,
+          "context_economy_ratio": 0.08571428571428572,
+          "execution_time_ms": 0.1376250002067536
+        },
+        "semantic_closure": {
+          "target_object": {
+            "id": "MeaningMeasurement",
+            "category": "DomainConcept"
+          },
+          "objects": [
+            {
+              "id": "MeaningMeasurement",
+              "category": "DomainConcept",
+              "score": 0.0
+            },
+            {
+              "id": "concept-55ca929b1a41bad1",
+              "category": "CrystallizedKnowledge",
+              "score": 0.4375
+            },
+            {
+              "id": "msr/src/msr/abi.py",
+              "category": "CodeImplementation",
+              "score": 0.470833
+            },
+            {
+              "id": "cle/docs/BOUNDARIES.md",
+              "category": "SpecificationDocument",
+              "score": 0.504167
+            },
+            {
+              "id": "msr/RFC-MSR01.md",
+              "category": "SpecificationDocument",
+              "score": 0.504167
+            },
+            {
+              "id": "msr/docs/ARCHITECTURE.md",
+              "category": "SpecificationDocument",
+              "score": 0.504167
+            },
+            {
+              "id": "cle/docs/RFC_ALIGNMENT.md",
+              "category": "SpecificationDocument",
+              "score": 0.541667
+            },
+            {
+              "id": "msr/docs/BOUNDARIES.md",
+              "category": "SpecificationDocument",
+              "score": 0.541667
+            },
+            {
+              "id": "msr/docs/RFC_ALIGNMENT.md",
+              "category": "SpecificationDocument",
+              "score": 0.541667
+            }
+          ],
+          "morphisms": [
+            {
+              "source": "cle/docs/BOUNDARIES.md",
+              "target": "MeaningMeasurement",
+              "type": "documents"
+            },
+            {
+              "source": "cle/docs/RFC_ALIGNMENT.md",
+              "target": "cle/docs/BOUNDARIES.md",
+              "type": "references"
+            },
+            {
+              "source": "concept-55ca929b1a41bad1",
+              "target": "MeaningMeasurement",
+              "type": "depends_on"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "MeaningMeasurement",
+              "type": "documents"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "msr/docs/BOUNDARIES.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "msr/docs/RFC_ALIGNMENT.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/ARCHITECTURE.md",
+              "target": "MeaningMeasurement",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/BOUNDARIES.md",
+              "target": "msr/RFC-MSR01.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/RFC-MSR01.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/docs/BOUNDARIES.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/src/msr/abi.py",
+              "type": "references"
+            },
+            {
+              "source": "msr/src/msr/abi.py",
+              "target": "MeaningMeasurement",
+              "type": "implements"
+            }
+          ],
+          "proof_path": [
+            "MeaningMeasurement"
+          ],
+          "pullback_roots": [],
+          "pushout_wavefront": [
+            "cle/docs/RFC_ALIGNMENT.md",
+            "concept-55ca929b1a41bad1",
+            "msr/docs/ARCHITECTURE.md"
+          ]
+        }
+      },
+      "msr/docs/BOUNDARIES.md": {
+        "query": {
+          "raw_term": "msr/docs/BOUNDARIES.md",
+          "resolved_concept_id": "msr/docs/BOUNDARIES.md"
+        },
+        "search_metrics": {
+          "composition_depth": 4,
+          "false_inclusion_rate": 0.0,
+          "context_economy_ratio": 0.21904761904761905,
+          "execution_time_ms": 0.283875000604894
+        },
+        "semantic_closure": {
+          "target_object": {
+            "id": "msr/docs/BOUNDARIES.md",
+            "category": "SpecificationDocument"
+          },
+          "objects": [
+            {
+              "id": "FieldPrior",
+              "category": "DomainConcept",
+              "score": 0.031818
+            },
+            {
+              "id": "InformationAssimilator",
+              "category": "DomainConcept",
+              "score": 0.031818
+            },
+            {
+              "id": "KernelView",
+              "category": "DomainConcept",
+              "score": 0.031818
+            },
+            {
+              "id": "LangevinFlow",
+              "category": "DomainConcept",
+              "score": 0.031818
+            },
+            {
+              "id": "StabilizedTrajectory",
+              "category": "DomainConcept",
+              "score": 0.031818
+            },
+            {
+              "id": "CFLViolation",
+              "category": "DomainConcept",
+              "score": 0.063636
+            },
+            {
+              "id": "FrameMismatch",
+              "category": "DomainConcept",
+              "score": 0.063636
+            },
+            {
+              "id": "MSRHost",
+              "category": "DomainConcept",
+              "score": 0.063636
+            },
+            {
+              "id": "MeaningMeasurement",
+              "category": "DomainConcept",
+              "score": 0.063636
+            },
+            {
+              "id": "MeaningState",
+              "category": "DomainConcept",
+              "score": 0.063636
+            },
+            {
+              "id": "msr/docs/BOUNDARIES.md",
+              "category": "SpecificationDocument",
+              "score": 0.066667
+            },
+            {
+              "id": "MeaningSpaceRuntime",
+              "category": "DomainConcept",
+              "score": 0.081818
+            },
+            {
+              "id": "StabilizationDetector",
+              "category": "DomainConcept",
+              "score": 0.081818
+            },
+            {
+              "id": "msr/tests/test_stiffness_and_latch.py",
+              "category": "CodeImplementation",
+              "score": 0.09697
+            },
+            {
+              "id": "msr/RFC-MSR01.md",
+              "category": "SpecificationDocument",
+              "score": 0.098485
+            },
+            {
+              "id": "msr/experiments/_nvs_bridge.py",
+              "category": "CodeImplementation",
+              "score": 0.115152
+            },
+            {
+              "id": "msr/experiments/exp_msr_004_recovery.py",
+              "category": "CodeImplementation",
+              "score": 0.115152
+            },
+            {
+              "id": "msr/src/msr/abi.py",
+              "category": "CodeImplementation",
+              "score": 0.115152
+            },
+            {
+              "id": "msr/tests/test_properties.py",
+              "category": "CodeImplementation",
+              "score": 0.115152
+            },
+            {
+              "id": "msr/docs/RFC_ALIGNMENT.md",
+              "category": "SpecificationDocument",
+              "score": 0.116667
+            },
+            {
+              "id": "msr/docs/VERIFICATION.md",
+              "category": "SpecificationDocument",
+              "score": 0.130303
+            },
+            {
+              "id": "commit:159d89e",
+              "category": "GitCommit",
+              "score": 0.213636
+            },
+            {
+              "id": "commit:6fc3d98",
+              "category": "GitCommit",
+              "score": 0.213636
+            }
+          ],
+          "morphisms": [
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "CFLViolation",
+              "type": "documents"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "FrameMismatch",
+              "type": "documents"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "KernelView",
+              "type": "documents"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "MSRHost",
+              "type": "documents"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "MeaningMeasurement",
+              "type": "documents"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "MeaningState",
+              "type": "documents"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "StabilizedTrajectory",
+              "type": "documents"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "msr/docs/BOUNDARIES.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "msr/docs/RFC_ALIGNMENT.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "msr/docs/VERIFICATION.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/RFC-MSR01.md",
+              "target": "msr/tests/test_stiffness_and_latch.py",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/BOUNDARIES.md",
+              "target": "FieldPrior",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/BOUNDARIES.md",
+              "target": "InformationAssimilator",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/BOUNDARIES.md",
+              "target": "KernelView",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/BOUNDARIES.md",
+              "target": "LangevinFlow",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/BOUNDARIES.md",
+              "target": "StabilizedTrajectory",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/BOUNDARIES.md",
+              "target": "msr/RFC-MSR01.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "CFLViolation",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "FieldPrior",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "InformationAssimilator",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "KernelView",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "LangevinFlow",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "MSRHost",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "MeaningSpaceRuntime",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "MeaningState",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "StabilizationDetector",
+              "type": "documents"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/RFC-MSR01.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/docs/BOUNDARIES.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/docs/VERIFICATION.md",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/experiments/_nvs_bridge.py",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/experiments/exp_msr_004_recovery.py",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/src/msr/abi.py",
+              "type": "references"
+            },
+            {
+              "source": "msr/docs/RFC_ALIGNMENT.md",
+              "target": "msr/tests/test_properties.py",
+              "type": "references"
+            },
+            {
+              "source": "msr/src/msr/abi.py",
+              "target": "KernelView",
+              "type": "implements"
+            },
+            {
+              "source": "msr/src/msr/abi.py",
+              "target": "MeaningMeasurement",
+              "type": "implements"
+            },
+            {
+              "source": "msr/src/msr/abi.py",
+              "target": "MeaningState",
+              "type": "implements"
+            },
+            {
+              "source": "msr/src/msr/abi.py",
+              "target": "StabilizedTrajectory",
+              "type": "implements"
+            },
+            {
+              "source": "msr/src/msr/abi.py",
+              "target": "commit:159d89e",
+              "type": "modified_by"
+            },
+            {
+              "source": "msr/src/msr/abi.py",
+              "target": "commit:6fc3d98",
+              "type": "modified_by"
+            }
+          ],
+          "proof_path": [
+            "msr/docs/BOUNDARIES.md",
+            "msr/RFC-MSR01.md",
+            "msr/docs/RFC_ALIGNMENT.md",
+            "msr/src/msr/abi.py",
+            "commit:159d89e"
+          ],
+          "pullback_roots": [
+            "CFLViolation",
+            "FieldPrior",
+            "FrameMismatch",
+            "InformationAssimilator",
+            "KernelView",
+            "LangevinFlow",
+            "MSRHost",
+            "MeaningMeasurement",
+            "MeaningSpaceRuntime",
+            "MeaningState",
+            "StabilizationDetector",
+            "StabilizedTrajectory",
+            "commit:159d89e",
+            "commit:6fc3d98",
+            "msr/docs/VERIFICATION.md",
+            "msr/experiments/_nvs_bridge.py",
+            "msr/experiments/exp_msr_004_recovery.py",
+            "msr/tests/test_properties.py",
+            "msr/tests/test_stiffness_and_latch.py"
+          ],
+          "pushout_wavefront": []
+        }
+      },
+      "concept-55ca929b1a41bad1": {
+        "query": {
+          "raw_term": "concept-55ca929b1a41bad1",
+          "resolved_concept_id": "concept-55ca929b1a41bad1"
+        },
+        "search_metrics": {
+          "composition_depth": 0,
+          "false_inclusion_rate": 0.0,
+          "context_economy_ratio": 0.01904761904761905,
+          "execution_time_ms": 0.05095799861010164
+        },
+        "semantic_closure": {
+          "target_object": {
+            "id": "concept-55ca929b1a41bad1",
+            "category": "CrystallizedKnowledge"
+          },
+          "objects": [
+            {
+              "id": "concept-55ca929b1a41bad1",
+              "category": "CrystallizedKnowledge",
+              "score": 0.0
+            },
+            {
+              "id": "MeaningMeasurement",
+              "category": "DomainConcept",
+              "score": 0.7
+            }
+          ],
+          "morphisms": [
+            {
+              "source": "concept-55ca929b1a41bad1",
+              "target": "MeaningMeasurement",
+              "type": "depends_on"
+            }
+          ],
+          "proof_path": [
+            "concept-55ca929b1a41bad1",
+            "MeaningMeasurement"
+          ],
+          "pullback_roots": [
+            "MeaningMeasurement"
+          ],
+          "pushout_wavefront": []
+        }
+      }
+    },
+    "pass": true
+  },
+  "deterministic_replay": {
+    "deterministic": true,
+    "pass": true
+  },
+  "pullback_accuracy": {
+    "independently_confirmed_in_source": true,
+    "shared_pullback_root_found": true,
+    "pass": true
+  },
+  "pushout_recall": {
+    "expected_direct_dependent_count": 4,
+    "missing": [],
+    "recall": 1.0,
+    "pass": true
+  },
+  "latency_at_scale": {
+    "sample_count": 100,
+    "node_count": 105,
+    "latency_p50_ms": 0.051291994168423116,
+    "latency_p99_ms": 0.12529200466815382,
+    "latency_target_ms": 10.0,
+    "pass": true
+  },
+  "differential_synchronization": {
+    "revisions_compared": [
+      "159d89e6ee8f5ec94da9fd1556635f8cf8ecb194",
+      "6fc3d98a1865fd8ff220cbdf1918aedf09903d0b"
+    ],
+    "first_ingest_new_relations": 4,
+    "second_ingest_new_relations": 0,
+    "other_revision_new_relations": 4,
+    "idempotent": true,
+    "diff_identity": true,
+    "pass": true
+  },
+  "pass": true
+}
