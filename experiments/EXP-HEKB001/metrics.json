@@ -1,0 +1,43 @@
+{
+  "experiment": "EXP-HEKB001",
+  "commit": "4379eb92ab5e14c6d307bc5ed4474dfef64fc2bf",
+  "executed_at": "2026-08-04T23:00:09+09:00",
+  "pass": true,
+  "success_rate": {
+    "sub_checks_passed": 3,
+    "sub_checks_total": 3,
+    "ratio": 1.0,
+    "sub_check_names": ["persistence", "lineage", "scale"]
+  },
+  "counts": {
+    "concepts_ingested": 5,
+    "relations_ingested": 4,
+    "round_trip_checked_count": 4,
+    "scale_record_count": 500
+  },
+  "replay_determinism": {
+    "deterministic_replay": true,
+    "idempotent_commit": true,
+    "duplicate_detection": true
+  },
+  "latency": {
+    "lookup_p50_ms": 0.4681670034187846,
+    "lookup_p95_ms": 0.7692090002819896,
+    "lookup_target_ms": 5.0,
+    "target_met": true,
+    "write_throughput_records_per_s": 1604.4880740330752,
+    "storage_bytes": 205780
+  },
+  "context_economy": null,
+  "quality_gates": {
+    "pytest_passed": 29,
+    "pytest_total": 29,
+    "pytest_failed": 0,
+    "coverage_percent": 91,
+    "coverage_scope": "src/hekb (experiments/ not measured by pytest-cov config)",
+    "ruff_check": "pass",
+    "ruff_format_check": "pass",
+    "mypy_strict": "pass",
+    "src_hekb_modified": false
+  }
+}

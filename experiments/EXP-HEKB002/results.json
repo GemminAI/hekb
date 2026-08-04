@@ -1,0 +1,49 @@
+{
+  "experiment": "EXP-HEKB002",
+  "scope": "Real msr + real cle (installed editable, experiments-only; see docs/RFC_ALIGNMENT.md) produce one genuine StabilizedTrajectory -> Concept. Graphify is a deterministic fixture, not production Graphify (none exists in this workspace). MCP is an in-process reference query interface, not a real network MCP server. homotopy_hash/betti_numbers from the spec's example schema are omitted, not fabricated -- CLE implements no homotopy algorithm.",
+  "end_to_end_yield": true,
+  "uncaught_exception": null,
+  "persistence": {
+    "round_trip_identity": true,
+    "deterministic_replay": true,
+    "idempotent_commit": true,
+    "duplicate_detection": true,
+    "pass": true
+  },
+  "dual_source_alignment": {
+    "composable": true,
+    "composed_source": "concept-55ca929b1a41bad1",
+    "composed_target": "RFC-MM001",
+    "pass": true
+  },
+  "semantic_closure": {
+    "deterministic_closure": true,
+    "closure_correct": true,
+    "functoriality_preserved": true,
+    "pullback_roots": [
+      "RFC-MM001"
+    ],
+    "pushout_wavefront": [],
+    "derived_composition_count": 1,
+    "pass": true
+  },
+  "mcp_query": {
+    "sample_count": 200,
+    "latency_p50_ms": 0.007208996976260096,
+    "latency_p99_ms": 0.041040999349206686,
+    "latency_target_ms": 5.0,
+    "schema_complete": true,
+    "pass": true
+  },
+  "closed_loop_reuse": {
+    "well_reconstructed": true,
+    "reconstructed_well_mean": [
+      2.0,
+      -1.0
+    ],
+    "basin_recovered": true,
+    "recovered_basin_id": "concept-55ca929b1a41bad1",
+    "pass": true
+  },
+  "pass": true
+}

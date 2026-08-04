@@ -1,0 +1,76 @@
+{
+  "experiment": "EXP-HEKB003",
+  "commit": "f2ed9ec5e95642a4c3bd6e60f7f3eb6b6f59ee48",
+  "executed_at": "2026-08-05T00:11:34+09:00",
+  "pass": true,
+  "success_rate": {
+    "sub_checks_passed": 6,
+    "sub_checks_total": 6,
+    "ratio": 1.0,
+    "sub_check_names": [
+      "stage4_5_searches",
+      "deterministic_replay",
+      "pullback_accuracy",
+      "pushout_recall",
+      "latency_at_scale",
+      "differential_synchronization"
+    ]
+  },
+  "counts": {
+    "repositories_surveyed": 3,
+    "markdown_files_read": 10,
+    "python_files_read": 17,
+    "commit_targets": 4,
+    "vocabulary_size": 52,
+    "total_objects_ingested": 105,
+    "queries_executed": 3
+  },
+  "cross_domain_traversal_yield": {
+    "uncaught_exceptions": 0,
+    "yield_rate": 1.0
+  },
+  "composition_depth": {
+    "max_hops_found": 4,
+    "target_hops": 4,
+    "target_met": true
+  },
+  "replay_determinism": {
+    "deterministic_replay": true,
+    "pullback_accuracy_independently_confirmed": true,
+    "pushout_recall": 1.0,
+    "differential_sync_idempotent": true,
+    "differential_sync_diff_identity": true
+  },
+  "context_economy": {
+    "MeaningMeasurement_query": 0.08571428571428572,
+    "concept-55ca929b1a41bad1_query": 0.01904761904761905,
+    "msr/docs/BOUNDARIES.md_query": 0.21904761904761905,
+    "target": 0.15,
+    "target_met_all_queries": false,
+    "note": "reported honestly, not force-gated -- real, query-dependent values on a 105-object proof-of-concept-scale real corpus"
+  },
+  "latency": {
+    "search_p50_ms": 0.051291994168423116,
+    "search_p99_ms": 0.12529200466815382,
+    "target_ms": 10.0,
+    "target_met": true,
+    "sample_count": 100,
+    "node_count": 105
+  },
+  "false_inclusion_rate": {
+    "MeaningMeasurement_query": 0.0,
+    "concept-55ca929b1a41bad1_query": 0.0,
+    "msr/docs/BOUNDARIES.md_query": 0.0
+  },
+  "quality_gates": {
+    "pytest_passed": 29,
+    "pytest_total": 29,
+    "pytest_failed": 0,
+    "coverage_percent": 91,
+    "coverage_scope": "src/hekb (experiments/ not measured by pytest-cov config)",
+    "ruff_check": "pass",
+    "ruff_format_check": "pass",
+    "mypy_strict": "pass",
+    "src_hekb_modified": false
+  }
+}

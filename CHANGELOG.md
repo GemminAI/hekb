@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — EXP archival: EXP-HEKB001, EXP-HEKB002, EXP-HEKB003 knowledge artifacts
+
+`experiments/EXP-HEKB001/`, `experiments/EXP-HEKB002/`,
+`experiments/EXP-HEKB003/` (new): each completed experiment's
+specification, report, measured results, and quantitative metrics saved
+as a formal, reproducible knowledge artifact
+(`specification.md`, `report.md`, `results.json`, `metrics.json`,
+`README.md`), independent of the implementation code under `experiments/`.
+
 ### Added — EXP-HEKB003 real-world cross-domain semantic search & closure
 
 Replaces EXP-HEKB002's hand-specified Graphify fixture with **real**

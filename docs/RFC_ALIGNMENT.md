@@ -338,3 +338,14 @@ Full results: `experiments/results/exp_hekb_003.json` (`"pass": true`).
 | B (spec doesn't match implementation) | None new. |
 | C (architectural decision, open) | Whether `D_ranking`'s weights (`0.4, 0.3, 0.2, 0.1`, chosen, not derived) should be tuned against real retrieval-quality judgments once any exist; unchanged open questions from EXP-HEKB001/002 still stand. |
 | D (future experiment) | A larger real corpus (full `src/` trees, not a curated subset) to test whether `context_economy_ratio <= 0.15` holds generally, not just for some query shapes; real Graphify once it exists; real ADR ingestion once a real ADR directory exists somewhere in this workspace. |
+
+## EXP archival (2026-08-05)
+
+EXP-HEKB001, EXP-HEKB002, and EXP-HEKB003 are additionally saved as formal,
+self-contained Knowledge Artifacts under `experiments/EXP-HEKB00{1,2,3}/`
+(`specification.md`, `report.md`, `results.json`, `metrics.json`,
+`README.md` each) — a persisted, reproducible record independent of the
+implementation code, consistent with this repository's own subject matter.
+The findings above are the canonical record; the per-EXP `report.md` files
+restate them alongside quantitative metrics and reproduction instructions
+for that specific experiment.
