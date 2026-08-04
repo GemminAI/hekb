@@ -7,6 +7,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — EXP-HEKB002 closed-loop end-to-end verification
+
+Validates the full loop MM/MSR -> CLE -> HEKB storage -> Semantic Closure
+query -> MCP -> MSR re-injection, using real, unmodified
+`meaning-space-runtime`/`categorical-lift-engine` production code where it
+exists, and honest reference fixtures where it doesn't (Graphify, MCP
+transport). `src/hekb` is unmodified. See `docs/RFC_ALIGNMENT.md`
+("EXP-HEKB002: closed-loop end-to-end verification") for the full record,
+including the gate-dependency note, scope decisions, a new CLE-ABI
+adapter, and a fixture bug (an accidental 2-cycle) found and fixed during
+this work.
+
+- `experiments/_msr_cle_pipeline.py` (new): a real `MeaningSpaceRuntime` +
+  `CategoricalLiftEngine` (its own `cle.reference` strategies) produce one
+  genuine `StabilizedTrajectory` -> `Concept`.
+- `experiments/_cle_hekb_adapter.py` (new): `cle.abi.outputs.Concept` ->
+  `hekb.models.Concept` — no such adapter existed anywhere in the
+  workspace before this.
+- `experiments/_concept_store.py` (new): `FileConceptStore`, extending
+  EXP-HEKB001's `FileProjectionBackend` pattern to `Concept`s (which
+  `HEKBCoreRuntime.ingest_object` never persists).
+- `experiments/_graphify_reference.py` (new): a deterministic
+  `PropertyGraph` fixture — explicitly not production Graphify.
+- `experiments/_functorial_graph_adapter.py` (new): a real, checked
+  `PropertyGraph -> C_HEKB` functor, including a functoriality-preservation
+  check against HEKB's real `compose`.
+- `experiments/_semantic_closure.py` (new): the Semantic Closure Engine —
+  pure categorical retrieval (no vector/embedding search), computing a
+  deterministic, verified-minimal self-contained subcategory with pullback
+  root / pushout wavefront navigation.
+- `experiments/_mcp_reference.py` (new): an in-process reference MCP query
+  interface (not a real network MCP server) returning the EXP-HEKB002 §V
+  response shape.
+- `experiments/exp_hekb_002_closed_loop.py` (new): orchestrates Phases
+  1–5, measures all ten metrics the specification and its implementation
+  instructions name. All pass — `experiments/results/exp_hekb_002.json`
+  (`"pass": true`).
+
 ### Added — EXP-HEKB001 persistence & lineage validation
 
 Validates `HEKBCoreRuntime` against a real, file-based `ProjectionBackend`

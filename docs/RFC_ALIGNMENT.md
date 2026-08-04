@@ -116,3 +116,117 @@ remains a future milestone, pending a confirmed corpus location.
 | B (spec doesn't match implementation) | Stage 2's "must not... Category theory" boundary clause (see "Boundary-model correction" above). |
 | C (architectural decision, open) | `StorageProfile`'s declarative-summary-vs-full-fidelity scope (see "StorageProfile fidelity gap" above). |
 | D (future experiment) | Real Graphify integration once Graphify exports an interface; real `RFCv3_draft`/`sensos-docs`/Daily Logs ingestion once a confirmed corpus location exists. |
+
+## EXP-HEKB002: closed-loop end-to-end verification (2026-08-04)
+
+`experiments/exp_hekb_002_closed_loop.py` validates the full loop
+EXP-HEKB002 names — observation through MSR, CLE, HEKB storage, a
+Semantic Closure query, and back into a fresh MSR `FieldPrior` — using
+real, unmodified `meaning-space-runtime` and `categorical-lift-engine`
+production code wherever it exists, and honest, explicitly-labeled
+reference fixtures everywhere it doesn't. `src/hekb` is unmodified.
+
+### Gate dependency: msr, cle
+
+`meaning-space-runtime` and `categorical-lift-engine` are installed
+editable into this repository's `.venv` (`uv pip install --python
+.venv/bin/python -e ../meaning-space-runtime -e ../categorical-lift-engine`),
+for `experiments/` use only — the same pattern
+`meaning-space-runtime/docs/RFC_ALIGNMENT.md` already documents for its
+own `nvs-kernel` gate dependency. Neither is a declared `pyproject.toml`
+dependency (both are unpublished, sibling-repository sources); `src/hekb`
+imports neither.
+
+### Scope decisions
+
+- **"Local Model / semantic-annotator-core / Meaning Mapper"** is
+  represented by a clean, deterministic `msr.abi.MeaningMeasurement`
+  stream fed directly into a real `msr.runtime.MeaningSpaceRuntime` —
+  `meaning-space-runtime`'s own convention for standing in for its
+  upstream neighbours in an experiment (`temperature=0` makes the runtime
+  fully deterministic; `msr.abi.MeaningMeasurement` is exactly the shape
+  those two repositories' real outputs are defined to satisfy). Neither
+  `semantic-annotator-core` nor `meaning-mapper` is called directly — both
+  would need a real model to produce a deterministic measurement without
+  this substitution, and validating *those* two repositories' own
+  internals is not this experiment's job.
+- **Graphify remains an external dependency, not implemented or stubbed**,
+  per explicit instruction and unchanged from EXP-HEKB001:
+  `experiments/_graphify_reference.py` is a small, hand-specified
+  `PropertyGraph` **fixture**, not a Markdown parser and not a
+  `ProducerLike` interface guessing at Graphify's real shape.
+- **The MCP interface is an in-process reference query
+  (`experiments/_mcp_reference.py`), not a real Model Context Protocol
+  server.** Implementing the actual MCP wire/transport format is
+  infrastructure this experiment does not need to validate what Phase 4
+  actually asked for: that a query returns the `SemanticClosure` response
+  shape EXP-HEKB002 §V specifies, computed by real categorical retrieval.
+- **`homotopy_hash`/`betti_numbers` from §V's example schema are omitted,
+  not fabricated.** `categorical-lift-engine` implements no homotopy or
+  persistent-topology algorithm (`cle.homotopy` is an interface only —
+  recorded in that repository's own `docs/RFC_ALIGNMENT.md`). Inventing
+  those two fields here would be exactly the kind of over-claim this
+  workspace's convention exists to prevent. A real `content_sha256`
+  (the same `_file_backend.content_hash` convention EXP-HEKB001
+  established) is reported in their place.
+- **No vector or embedding search anywhere** — `_semantic_closure.py` is
+  pure graph/category traversal over `hekb.category.KnowledgeCategory`'s
+  real, already-audited `compose`, per explicit instruction.
+
+### A new production adapter gap found and bridged (reference-only)
+
+No adapter exists anywhere in the workspace between `cle.abi.outputs.Concept`
+(a point in continuous meaning space) and `hekb.models.Concept` (an object
+of the category of finite sets) — the two ABIs are deliberately different
+shapes. `experiments/_cle_hekb_adapter.py` bridges them: `centroid`/`hessian`/
+`invariants` transfer exactly (both ABIs already shape them identically,
+enabling closed-loop reuse — see below); `elements` is genuinely invented
+(`frozenset({concept.id})`, the simplest choice satisfying HEKB's category
+axioms without fabricating finite-set structure CLE never claimed). This
+adapter is a reference bridge in `experiments/`, not a change to either
+repository's ABI.
+
+### `HEKBCoreRuntime.ingest_object` still never persists — extended, not fixed
+
+The `StorageProfile` fidelity gap recorded in EXP-HEKB001 (above) still
+holds: `ingest_object` never calls a `ProjectionBackend`. Metric 2 needs
+`Concept`s to round-trip through storage too, so
+`experiments/_concept_store.py` (`FileConceptStore`) extends the same
+content-hashed, file-based pattern `_file_backend.py` established —
+another harness-level addition, not a `src/hekb` change.
+
+### A cycle, found and corrected in the fixture, not in HEKB
+
+An earlier version of `_graphify_reference.py`'s fixture graph encoded
+"RFC-MM001 defines MeaningMeasurement" *and* "MeaningMeasurement exists in
+the context of RFC-MM001" as two opposite-direction edges between the same
+two nodes — the same fact stated from both ends, forming a 2-cycle.
+`_semantic_closure.py`'s original pullback/pushout root detection assumed
+acyclicity and either infinite-looped (`_derived_compositions`, before a
+cycle-guard was added) or returned empty root/wavefront sets (the "no
+outgoing edges" root test, true of neither node in a mutual cycle). Fixed
+in the fixture (one direction only, so the graph is a DAG) — `compose`
+itself, and `KnowledgeCategory`, are not required to be acyclic in
+general, and `_derived_compositions` keeps its cycle guard regardless.
+
+### Validated metrics
+
+| Property | Result |
+|---|---|
+| End-to-end yield | **Pass** — 0 uncaught exceptions across the full Phase 1–5 run |
+| Persistence (round-trip identity, deterministic replay, idempotent commit, duplicate detection) | **Pass** — for both `Concept`s (`FileConceptStore`) and `KnowledgeRelation`-derived `StorageProfile`s (`FileProjectionBackend`) |
+| Dual-source cross-reference alignment | **Pass** — the CLE-discovered `Concept`'s `grounded_in` morphism composes (via real `KnowledgeCategory.compose`) with the Graphify-fixture's `context` morphism into one real `engine_concept -> RFC-MM001` morphism, spanning both ingestion paths |
+| Semantic Closure correctness | **Pass** — deterministic across repeated queries, minimal-self-contained (a real post-hoc invariant check, not a hardcoded flag), correct pullback root (`RFC-MM001`), functoriality preservation verified against an independently hand-computed expected composition |
+| MCP query latency | **Pass** — 200 samples, p99 0.04ms against a 5ms target (in-process reference query; not comparable to a real network MCP server's latency) |
+| Closed-loop knowledge re-injection | **Pass** — the `Concept` *reloaded from disk* (not the in-memory original) round-trips through `msr.adapters.hekb.field_prior_from_concepts` (real, unmodified `msr` code) into a fresh `FieldPrior`; a perturbed observation genuinely re-stabilizes into the reconstructed basin (`basin_id` matches the reloaded concept's id) |
+
+Full results: `experiments/results/exp_hekb_002.json` (`"pass": true`).
+
+### Gap analysis summary (Stage 8)
+
+| Priority | Finding |
+|---|---|
+| A (implementation defect) | None found in `src/hekb`. The fixture 2-cycle above was a harness bug, fixed in the harness. |
+| B (spec doesn't match implementation) | None new — EXP-HEKB001's boundary-model finding still applies. |
+| C (architectural decision, open) | Whether `HEKBCoreRuntime.ingest_object` should ever call a `ProjectionBackend` (unchanged, open since EXP-HEKB001); whether `cle.abi.outputs.Concept -> hekb.models.Concept` deserves a real, shared adapter once both repositories stabilize their ABIs, versus remaining each consuming experiment's own reference bridge. |
+| D (future experiment) | A real MCP network service; real Graphify; homotopy/persistent-topology metrics once `cle.homotopy` has a real implementation to measure. |
