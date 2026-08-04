@@ -5,6 +5,51 @@ All notable changes to HEKB are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added — EXP-HEKB001 persistence & lineage validation
+
+Validates `HEKBCoreRuntime` against a real, file-based `ProjectionBackend`
+instead of `InMemoryProjectionBackend` — no `src/hekb` code changed. See
+`docs/RFC_ALIGNMENT.md` for the full record, including two corrections to
+the commissioning specification (a boundary-model mismatch around category
+theory, and a Graphify-integration scope correction) and one open
+architectural question (the `StorageProfile` fidelity gap) left
+undecided.
+
+- `experiments/_file_backend.py` (new): `FileProjectionBackend` — a real,
+  deterministic, SHA-256-content-hashed `ProjectionBackend` implementation.
+  Lives outside `src/hekb`, depends on `hekb`, never the reverse — the
+  extension point `docs/architecture.md` already names. Writes plain JSON
+  via the standard library only; no database driver.
+- `experiments/_lineage_fixture.py` (new): the RFC-MM001/RFC-MSR01
+  defines/consumes/provenance example from EXP-HEKB001 itself, built as
+  real `Concept`/`KnowledgeRelation` values — not a Graphify stand-in.
+- `experiments/exp_hekb_001_persistence_validation.py` (new): validates
+  round-trip identity, deterministic replay, idempotent commit, duplicate
+  detection, immutability, recovery, lineage composition, and
+  synthetic-scale lookup latency (500 records, p95 0.77ms against a <5ms
+  target). Run against the real path this repository lives at
+  (`/media/psf/SSD1TB/HEKBv2`), via a dedicated, gitignored
+  `experiments/_hekb_store/` scratch subdirectory. All pass —
+  `experiments/results/exp_hekb_001.json` (`"pass": true`).
+- `docs/RFC_ALIGNMENT.md` (new).
+- `pyproject.toml`: `experiments` added to `[tool.ruff] src`, matching
+  `meaning-space-runtime`'s/`categorical-lift-engine`'s convention of
+  linting their own `experiments/`.
+- Graphify integration (EXP-HEKB001 Stage 3) is explicitly **not**
+  implemented or stubbed: no Graphify repository exists in this workspace,
+  and no `ProducerLike`/parsing interface was invented to stand in for it.
+  Recorded as an external-dependency milestone in `docs/RFC_ALIGNMENT.md`.
+
+### Not changed
+
+- No API changes. `src/hekb` is unmodified: 29 tests, 91% coverage
+  (unchanged from baseline; no `fail_under` gate), ruff clean, `mypy
+  --strict` clean.
+- `tests/test_storage_ignorance_audit.py` still passes unmodified — this
+  work adds a concrete backend outside `src/hekb`, not inside it.
+
 ## [1.0.1] - 2026-07-29
 
 Recovery release. `v1.0.0` was tagged against a repository bootstrap

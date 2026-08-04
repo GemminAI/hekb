@@ -1,0 +1,32 @@
+{
+  "experiment": "EXP-HEKB001",
+  "scope": "Stages 4-7 of EXP-HEKB001 minus Graphify integration (Stage 3), which is recorded as an external dependency, not implemented or stubbed here \u2014 see docs/RFC_ALIGNMENT.md. Cross-reference fixtures (Stage 5) and scale data (Stage 7) are synthetic, not RFCv3_draft/sensos-docs/Daily Logs, none of which exist under those names in this workspace.",
+  "persistence": {
+    "concepts_ingested": 5,
+    "relations_ingested": 4,
+    "round_trip_identity": true,
+    "round_trip_checked_count": 4,
+    "deterministic_replay": true,
+    "idempotent_commit": true,
+    "duplicate_detection": true,
+    "immutability": true,
+    "recovery": true,
+    "pass": true
+  },
+  "lineage": {
+    "lineage_composition_correct": true,
+    "lineage_composition_deterministic": true,
+    "pass": true
+  },
+  "scale": {
+    "skipped": false,
+    "record_count": 500,
+    "write_throughput_records_per_s": 1604.4880740330752,
+    "lookup_p50_ms": 0.4681670034187846,
+    "lookup_p95_ms": 0.7692090002819896,
+    "lookup_target_ms": 5.0,
+    "storage_bytes": 205780,
+    "pass": true
+  },
+  "pass": true
+}
