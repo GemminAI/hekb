@@ -1,0 +1,19 @@
+{
+  "commons_file": "Vincent van Gogh - De slaapkamer - Google Art Project.jpg",
+  "commons_file_url": "https://commons.wikimedia.org/wiki/File:Vincent van Gogh - De slaapkamer - Google Art Project.jpg",
+  "downloaded_derivative_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg/3840px-Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "requested_width_px": 2000,
+  "actual_downloaded_size_px": [
+    3840,
+    3047
+  ],
+  "real_full_original_url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "real_full_original_size_px": [
+    30000,
+    23803
+  ],
+  "note": "downloaded a real Commons-generated derivative (requested 2000px wide; Commons served its nearest cached size, recorded in actual_downloaded_size_px), not the full-resolution master file, to keep corpus size reasonable -- pixel content is real and unaltered, just not the maximum available resolution",
+  "license_short_name": "Public domain",
+  "usage_terms": "Public domain",
+  "retrieved": "2026-08-04T19:39:02Z"
+}

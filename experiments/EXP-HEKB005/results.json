@@ -1,0 +1,583 @@
+{
+  "experiment": "EXP-HEKB005",
+  "scope": "Real visual + text corpus (9 works: 3 Leonardo da Vinci, 3 Johannes Vermeer, 3 Vincent van Gogh) fetched once from Wikipedia, Wikidata, Wikimedia Commons, and public-domain critique sources (Vasari, EB1911, van Gogh's own letters) by _visual_corpus_fetch.py, cached under experiments/EXP-HEKB005/corpus/, and ingested here via real hekb.category.KnowledgeCategory + _semantic_closure.compute_closure (EXP-HEKB002, unmodified). No vector/embedding search anywhere. src/hekb not modified. visual_convergence_score and single-modality-fragment resolution are NOT measured/implemented -- see specification.md 'Implementation Status'.",
+  "uncaught_exception": null,
+  "stage1_corpus_discovery": {
+    "works": [
+      {
+        "artist": "Leonardo da Vinci",
+        "work": "Mona Lisa",
+        "work_slug": "mona_lisa",
+        "present_count": 5,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "HighResImage",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/mona_lisa/image.jpg",
+            "present": true
+          },
+          {
+            "modality": "ImageCrop",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/mona_lisa/crop.png",
+            "present": true
+          },
+          {
+            "modality": "MuseumCatalog",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/mona_lisa/catalog.json",
+            "present": true
+          },
+          {
+            "modality": "Critique",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/mona_lisa/critique.md",
+            "present": true
+          },
+          {
+            "modality": "Wiki",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/mona_lisa/wiki.md",
+            "present": true
+          }
+        ]
+      },
+      {
+        "artist": "Leonardo da Vinci",
+        "work": "Virgin of the Rocks (Louvre version)",
+        "work_slug": "virgin_of_the_rocks",
+        "present_count": 4,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "HighResImage",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/virgin_of_the_rocks/image.jpg",
+            "present": true
+          },
+          {
+            "modality": "ImageCrop",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/virgin_of_the_rocks/crop.png",
+            "present": true
+          },
+          {
+            "modality": "MuseumCatalog",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/virgin_of_the_rocks/catalog.json",
+            "present": true
+          },
+          {
+            "modality": "Critique",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/virgin_of_the_rocks/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/virgin_of_the_rocks/wiki.md",
+            "present": true
+          }
+        ]
+      },
+      {
+        "artist": "Leonardo da Vinci",
+        "work": "Saint John the Baptist",
+        "work_slug": "saint_john_the_baptist",
+        "present_count": 4,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "HighResImage",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/saint_john_the_baptist/image.jpg",
+            "present": true
+          },
+          {
+            "modality": "ImageCrop",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/saint_john_the_baptist/crop.png",
+            "present": true
+          },
+          {
+            "modality": "MuseumCatalog",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/saint_john_the_baptist/catalog.json",
+            "present": true
+          },
+          {
+            "modality": "Critique",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/saint_john_the_baptist/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/davinci/saint_john_the_baptist/wiki.md",
+            "present": true
+          }
+        ]
+      },
+      {
+        "artist": "Johannes Vermeer",
+        "work": "Girl with a Pearl Earring",
+        "work_slug": "girl_with_a_pearl_earring",
+        "present_count": 4,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "HighResImage",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/girl_with_a_pearl_earring/image.jpg",
+            "present": true
+          },
+          {
+            "modality": "ImageCrop",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/girl_with_a_pearl_earring/crop.png",
+            "present": true
+          },
+          {
+            "modality": "MuseumCatalog",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/girl_with_a_pearl_earring/catalog.json",
+            "present": true
+          },
+          {
+            "modality": "Critique",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/girl_with_a_pearl_earring/critique.md",
+            "present": false
+          },
+          {
+            "modality": "Wiki",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/girl_with_a_pearl_earring/wiki.md",
+            "present": true
+          }
+        ]
+      },
+      {
+        "artist": "Johannes Vermeer",
+        "work": "The Milkmaid",
+        "work_slug": "the_milkmaid",
+        "present_count": 5,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "HighResImage",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/the_milkmaid/image.jpg",
+            "present": true
+          },
+          {
+            "modality": "ImageCrop",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/the_milkmaid/crop.png",
+            "present": true
+          },
+          {
+            "modality": "MuseumCatalog",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/the_milkmaid/catalog.json",
+            "present": true
+          },
+          {
+            "modality": "Critique",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/the_milkmaid/critique.md",
+            "present": true
+          },
+          {
+            "modality": "Wiki",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/the_milkmaid/wiki.md",
+            "present": true
+          }
+        ]
+      },
+      {
+        "artist": "Johannes Vermeer",
+        "work": "View of Delft",
+        "work_slug": "view_of_delft",
+        "present_count": 5,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "HighResImage",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/view_of_delft/image.jpg",
+            "present": true
+          },
+          {
+            "modality": "ImageCrop",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/view_of_delft/crop.png",
+            "present": true
+          },
+          {
+            "modality": "MuseumCatalog",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/view_of_delft/catalog.json",
+            "present": true
+          },
+          {
+            "modality": "Critique",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/view_of_delft/critique.md",
+            "present": true
+          },
+          {
+            "modality": "Wiki",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vermeer/view_of_delft/wiki.md",
+            "present": true
+          }
+        ]
+      },
+      {
+        "artist": "Vincent van Gogh",
+        "work": "The Starry Night",
+        "work_slug": "the_starry_night",
+        "present_count": 5,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "HighResImage",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/the_starry_night/image.jpg",
+            "present": true
+          },
+          {
+            "modality": "ImageCrop",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/the_starry_night/crop.png",
+            "present": true
+          },
+          {
+            "modality": "MuseumCatalog",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/the_starry_night/catalog.json",
+            "present": true
+          },
+          {
+            "modality": "Critique",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/the_starry_night/critique.md",
+            "present": true
+          },
+          {
+            "modality": "Wiki",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/the_starry_night/wiki.md",
+            "present": true
+          }
+        ]
+      },
+      {
+        "artist": "Vincent van Gogh",
+        "work": "Sunflowers (Van Gogh series, F454)",
+        "work_slug": "sunflowers",
+        "present_count": 5,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "HighResImage",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/sunflowers/image.jpg",
+            "present": true
+          },
+          {
+            "modality": "ImageCrop",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/sunflowers/crop.png",
+            "present": true
+          },
+          {
+            "modality": "MuseumCatalog",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/sunflowers/catalog.json",
+            "present": true
+          },
+          {
+            "modality": "Critique",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/sunflowers/critique.md",
+            "present": true
+          },
+          {
+            "modality": "Wiki",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/sunflowers/wiki.md",
+            "present": true
+          }
+        ]
+      },
+      {
+        "artist": "Vincent van Gogh",
+        "work": "Bedroom in Arles",
+        "work_slug": "bedroom_in_arles",
+        "present_count": 5,
+        "expected_count": 5,
+        "files": [
+          {
+            "modality": "HighResImage",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/bedroom_in_arles/image.jpg",
+            "present": true
+          },
+          {
+            "modality": "ImageCrop",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/bedroom_in_arles/crop.png",
+            "present": true
+          },
+          {
+            "modality": "MuseumCatalog",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/bedroom_in_arles/catalog.json",
+            "present": true
+          },
+          {
+            "modality": "Critique",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/bedroom_in_arles/critique.md",
+            "present": true
+          },
+          {
+            "modality": "Wiki",
+            "path": "/media/psf/SSD1TB/HEKBv2/experiments/EXP-HEKB005/corpus/vangogh/bedroom_in_arles/wiki.md",
+            "present": true
+          }
+        ]
+      }
+    ],
+    "total_expected_observation_points": 45,
+    "total_present_observation_points": 42
+  },
+  "observation_bundle_completeness": {
+    "per_work": {
+      "davinci/mona_lisa": {
+        "observation_completeness": 1.0,
+        "weighted_observation_completeness": 1.0,
+        "recovered_count": 5,
+        "ground_truth_count": 5,
+        "cross_subject_invariants": [
+          {
+            "target_id": "davinci/saint_john_the_baptist",
+            "artist": "Leonardo da Vinci",
+            "work": "Saint John the Baptist",
+            "shared_invariant": "sfumato",
+            "evidence_source_id": "davinci/mona_lisa/critique.md"
+          },
+          {
+            "target_id": "davinci/virgin_of_the_rocks",
+            "artist": "Leonardo da Vinci",
+            "work": "Virgin of the Rocks (Louvre version)",
+            "shared_invariant": "sfumato",
+            "evidence_source_id": "davinci/mona_lisa/critique.md"
+          }
+        ],
+        "proof_path": [
+          "resolved-target:davinci/mona_lisa"
+        ]
+      },
+      "davinci/virgin_of_the_rocks": {
+        "observation_completeness": 1.0,
+        "weighted_observation_completeness": 1.0,
+        "recovered_count": 4,
+        "ground_truth_count": 4,
+        "cross_subject_invariants": [
+          {
+            "target_id": "davinci/mona_lisa",
+            "artist": "Leonardo da Vinci",
+            "work": "Mona Lisa",
+            "shared_invariant": "sfumato",
+            "evidence_source_id": "davinci/virgin_of_the_rocks/wiki.md"
+          },
+          {
+            "target_id": "davinci/saint_john_the_baptist",
+            "artist": "Leonardo da Vinci",
+            "work": "Saint John the Baptist",
+            "shared_invariant": "sfumato",
+            "evidence_source_id": "davinci/virgin_of_the_rocks/wiki.md"
+          }
+        ],
+        "proof_path": [
+          "resolved-target:davinci/virgin_of_the_rocks"
+        ]
+      },
+      "davinci/saint_john_the_baptist": {
+        "observation_completeness": 1.0,
+        "weighted_observation_completeness": 1.0,
+        "recovered_count": 4,
+        "ground_truth_count": 4,
+        "cross_subject_invariants": [
+          {
+            "target_id": "davinci/mona_lisa",
+            "artist": "Leonardo da Vinci",
+            "work": "Mona Lisa",
+            "shared_invariant": "sfumato",
+            "evidence_source_id": "davinci/saint_john_the_baptist/wiki.md"
+          },
+          {
+            "target_id": "davinci/virgin_of_the_rocks",
+            "artist": "Leonardo da Vinci",
+            "work": "Virgin of the Rocks (Louvre version)",
+            "shared_invariant": "sfumato",
+            "evidence_source_id": "davinci/saint_john_the_baptist/wiki.md"
+          }
+        ],
+        "proof_path": [
+          "resolved-target:davinci/saint_john_the_baptist"
+        ]
+      },
+      "vermeer/girl_with_a_pearl_earring": {
+        "observation_completeness": 1.0,
+        "weighted_observation_completeness": 1.0,
+        "recovered_count": 4,
+        "ground_truth_count": 4,
+        "cross_subject_invariants": [],
+        "proof_path": [
+          "resolved-target:vermeer/girl_with_a_pearl_earring"
+        ]
+      },
+      "vermeer/the_milkmaid": {
+        "observation_completeness": 1.0,
+        "weighted_observation_completeness": 1.0,
+        "recovered_count": 5,
+        "ground_truth_count": 5,
+        "cross_subject_invariants": [
+          {
+            "target_id": "vermeer/view_of_delft",
+            "artist": "Johannes Vermeer",
+            "work": "View of Delft",
+            "shared_invariant": "impasto",
+            "evidence_source_id": "vermeer/the_milkmaid/critique.md"
+          },
+          {
+            "target_id": "vermeer/view_of_delft",
+            "artist": "Johannes Vermeer",
+            "work": "View of Delft",
+            "shared_invariant": "camera obscura",
+            "evidence_source_id": "vermeer/the_milkmaid/critique.md"
+          }
+        ],
+        "proof_path": [
+          "resolved-target:vermeer/the_milkmaid"
+        ]
+      },
+      "vermeer/view_of_delft": {
+        "observation_completeness": 1.0,
+        "weighted_observation_completeness": 1.0,
+        "recovered_count": 5,
+        "ground_truth_count": 5,
+        "cross_subject_invariants": [
+          {
+            "target_id": "vermeer/the_milkmaid",
+            "artist": "Johannes Vermeer",
+            "work": "The Milkmaid",
+            "shared_invariant": "impasto",
+            "evidence_source_id": "vermeer/view_of_delft/critique.md"
+          },
+          {
+            "target_id": "vermeer/the_milkmaid",
+            "artist": "Johannes Vermeer",
+            "work": "The Milkmaid",
+            "shared_invariant": "camera obscura",
+            "evidence_source_id": "vermeer/view_of_delft/critique.md"
+          }
+        ],
+        "proof_path": [
+          "resolved-target:vermeer/view_of_delft"
+        ]
+      },
+      "vangogh/the_starry_night": {
+        "observation_completeness": 1.0,
+        "weighted_observation_completeness": 1.0,
+        "recovered_count": 5,
+        "ground_truth_count": 5,
+        "cross_subject_invariants": [],
+        "proof_path": [
+          "resolved-target:vangogh/the_starry_night"
+        ]
+      },
+      "vangogh/sunflowers": {
+        "observation_completeness": 1.0,
+        "weighted_observation_completeness": 1.0,
+        "recovered_count": 5,
+        "ground_truth_count": 5,
+        "cross_subject_invariants": [],
+        "proof_path": [
+          "resolved-target:vangogh/sunflowers"
+        ]
+      },
+      "vangogh/bedroom_in_arles": {
+        "observation_completeness": 1.0,
+        "weighted_observation_completeness": 1.0,
+        "recovered_count": 5,
+        "ground_truth_count": 5,
+        "cross_subject_invariants": [],
+        "proof_path": [
+          "resolved-target:vangogh/bedroom_in_arles"
+        ]
+      }
+    },
+    "mean_observation_completeness": 1.0,
+    "mean_weighted_observation_completeness": 1.0,
+    "target": 0.95,
+    "target_met": true
+  },
+  "disambiguation_test_d": {
+    "cross_artist_pair": {
+      "target_a": "davinci/mona_lisa",
+      "target_b": "vermeer/girl_with_a_pearl_earring",
+      "closure_a_size": 8,
+      "closure_b_size": 6,
+      "overlap_object_ids": [],
+      "false_convergence_rate": 0.0,
+      "disambiguated": true
+    },
+    "same_artist_pair": {
+      "target_a": "davinci/mona_lisa",
+      "target_b": "davinci/virgin_of_the_rocks",
+      "closure_a_size": 8,
+      "closure_b_size": 7,
+      "overlap_object_ids": [
+        "davinci",
+        "technique/sfumato"
+      ],
+      "false_convergence_rate": 0.2857142857142857,
+      "disambiguated": false,
+      "structural_overlap_ids": [
+        "davinci",
+        "technique/sfumato"
+      ],
+      "observation_level_overlap_ids": [],
+      "observation_level_disambiguated": true
+    },
+    "pass": true
+  },
+  "replay_determinism": {
+    "deterministic": true,
+    "pass": true
+  },
+  "latency_at_scale": {
+    "sample_count": 100,
+    "node_count": 57,
+    "latency_p50_ms": 0.01591700129210949,
+    "latency_p99_ms": 0.08408400026382878,
+    "latency_target_ms": 15.0,
+    "pass": true
+  },
+  "context_economy": {
+    "per_work": {
+      "davinci/mona_lisa": 0.14035087719298245,
+      "davinci/virgin_of_the_rocks": 0.12280701754385964,
+      "davinci/saint_john_the_baptist": 0.12280701754385964,
+      "vermeer/girl_with_a_pearl_earring": 0.10526315789473684,
+      "vermeer/the_milkmaid": 0.15789473684210525,
+      "vermeer/view_of_delft": 0.15789473684210525,
+      "vangogh/the_starry_night": 0.12280701754385964,
+      "vangogh/sunflowers": 0.12280701754385964,
+      "vangogh/bedroom_in_arles": 0.12280701754385964
+    },
+    "mean_context_economy_ratio": 0.13060428849902533,
+    "target": 0.15,
+    "note": "reported honestly, not force-gated on the 0.15 target -- a real, query-dependent number on this real corpus's actual scale"
+  },
+  "cross_subject_technique_invariants": {
+    "p_invariant_formally_measured": false,
+    "p_invariant_reason": "requires a query benchmark with known relevant/irrelevant results, which does not exist -- reporting a precision number without one would be fabrication",
+    "real_shared_technique_terms_found": {
+      "sfumato": [
+        "davinci/mona_lisa",
+        "davinci/saint_john_the_baptist",
+        "davinci/virgin_of_the_rocks"
+      ],
+      "impasto": [
+        "vermeer/the_milkmaid",
+        "vermeer/view_of_delft"
+      ],
+      "camera obscura": [
+        "vermeer/the_milkmaid",
+        "vermeer/view_of_delft"
+      ]
+    },
+    "vocabulary_terms_checked_with_no_cross_work_match": [
+      "chiaroscuro",
+      "glazing",
+      "grisaille",
+      "impressionism",
+      "pointillism",
+      "tenebrism",
+      "underpainting"
+    ]
+  },
+  "not_measured": {
+    "visual_convergence_score": "requires a real image-to-meaning measurement model; none exists anywhere in this workspace",
+    "homotopy_hash_betti_numbers": "cle.homotopy is still Protocol-only",
+    "cross_subject_technique_invariant_precision_P_invariant": "requires a query benchmark with known relevant/irrelevant results, which does not exist",
+    "single_modality_fragment_resolution": "recognizing a raw crop/audio fragment as a specific work id would require a real image/audio recognition model; not implemented -- every reconstruction here starts from an already-resolved resolved_target_id"
+  },
+  "pass": true
+}

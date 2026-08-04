@@ -1,0 +1,22 @@
+{
+  "wikidata_qid": "Q783215",
+  "wikidata_url": "https://www.wikidata.org/wiki/Q783215",
+  "source": "Wikidata (CC0)",
+  "retrieved": "2026-08-04T19:38:26Z",
+  "fields": {
+    "location": "Louvre Museum",
+    "collection": "Department of Paintings of the Louvre",
+    "inventory_number": [
+      "INV 775",
+      "MR 318"
+    ],
+    "material_used": [
+      "panel",
+      "oil paint"
+    ],
+    "height_cm": "69",
+    "width_cm": "57",
+    "inception": "+1514-00-00T00:00:00Z",
+    "creator": "Leonardo da Vinci"
+  }
+}

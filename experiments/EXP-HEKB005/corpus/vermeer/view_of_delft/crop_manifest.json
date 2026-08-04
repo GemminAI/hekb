@@ -1,0 +1,20 @@
+{
+  "source_image": "image.jpg",
+  "source_image_size_px": [
+    3840,
+    3201
+  ],
+  "pixel_bbox_ltrb": [
+    1280,
+    1622,
+    2774,
+    2390
+  ],
+  "bounding_box_normalized_ymin_xmin_ymax_xmax": [
+    0.5067,
+    0.3333,
+    0.7466,
+    0.7224
+  ],
+  "rationale": "the city skyline across the water, centered on the Nieuwe Kerk tower"
+}

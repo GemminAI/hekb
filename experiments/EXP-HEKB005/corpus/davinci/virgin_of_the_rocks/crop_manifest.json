@@ -1,0 +1,20 @@
+{
+  "source_image": "image.jpg",
+  "source_image_size_px": [
+    3460,
+    5487
+  ],
+  "pixel_bbox_ltrb": [
+    1250,
+    2073,
+    1890,
+    2804
+  ],
+  "bounding_box_normalized_ymin_xmin_ymax_xmax": [
+    0.3778,
+    0.3613,
+    0.511,
+    0.5462
+  ],
+  "rationale": "the Virgin's downcast face and sfumato-modelled features, the compositional and technical focal point of the painting"
+}

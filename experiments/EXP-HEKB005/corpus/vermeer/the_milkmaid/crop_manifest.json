@@ -1,0 +1,20 @@
+{
+  "source_image": "image.jpg",
+  "source_image_size_px": [
+    3840,
+    4306
+  ],
+  "pixel_bbox_ltrb": [
+    957,
+    1818,
+    2009,
+    2966
+  ],
+  "bounding_box_normalized_ymin_xmin_ymax_xmax": [
+    0.4222,
+    0.2492,
+    0.6888,
+    0.5232
+  ],
+  "rationale": "the maid's hands pouring milk from the jug into the bowl, the painting's central action"
+}

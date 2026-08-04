@@ -1,0 +1,26 @@
+{
+  "wikidata_qid": "Q12418",
+  "wikidata_url": "https://www.wikidata.org/wiki/Q12418",
+  "source": "Wikidata (CC0)",
+  "retrieved": "2026-08-04T19:36:27Z",
+  "fields": {
+    "location": [
+      "Salle des \u00c9tats, Louvre",
+      "Louvre Museum"
+    ],
+    "collection": "Department of Paintings of the Louvre",
+    "inventory_number": [
+      "INV 779",
+      "MR 316"
+    ],
+    "material_used": [
+      "oil paint",
+      "poplar panel",
+      "wood"
+    ],
+    "height_cm": "79.4",
+    "width_cm": "53.4",
+    "inception": "+1503-00-00T00:00:00Z",
+    "creator": "Leonardo da Vinci"
+  }
+}

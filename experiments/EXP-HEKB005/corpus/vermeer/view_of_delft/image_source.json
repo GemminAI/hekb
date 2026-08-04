@@ -1,0 +1,19 @@
+{
+  "commons_file": "Johannes Vermeer - View of Delft - 92 - Mauritshuis.jpg",
+  "commons_file_url": "https://commons.wikimedia.org/wiki/File:Johannes Vermeer - View of Delft - 92 - Mauritshuis.jpg",
+  "downloaded_derivative_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Johannes_Vermeer_-_View_of_Delft_-_92_-_Mauritshuis.jpg/3840px-Johannes_Vermeer_-_View_of_Delft_-_92_-_Mauritshuis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "requested_width_px": 2000,
+  "actual_downloaded_size_px": [
+    3840,
+    3201
+  ],
+  "real_full_original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Johannes_Vermeer_-_View_of_Delft_-_92_-_Mauritshuis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "real_full_original_size_px": [
+    6000,
+    5002
+  ],
+  "note": "downloaded a real Commons-generated derivative (requested 2000px wide; Commons served its nearest cached size, recorded in actual_downloaded_size_px), not the full-resolution master file, to keep corpus size reasonable -- pixel content is real and unaltered, just not the maximum available resolution",
+  "license_short_name": "Public domain",
+  "usage_terms": "Public domain",
+  "retrieved": "2026-08-04T19:38:46Z"
+}

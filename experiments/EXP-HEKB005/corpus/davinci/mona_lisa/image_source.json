@@ -1,0 +1,19 @@
+{
+  "commons_file": "Mona Lisa, by Leonardo da Vinci, from C2RMF natural color.jpg",
+  "commons_file_url": "https://commons.wikimedia.org/wiki/File:Mona Lisa, by Leonardo da Vinci, from C2RMF natural color.jpg",
+  "downloaded_derivative_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_natural_color.jpg/3840px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_natural_color.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "requested_width_px": 2000,
+  "actual_downloaded_size_px": [
+    3840,
+    5733
+  ],
+  "real_full_original_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_natural_color.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "real_full_original_size_px": [
+    7601,
+    11348
+  ],
+  "note": "downloaded a real Commons-generated derivative (requested 2000px wide; Commons served its nearest cached size, recorded in actual_downloaded_size_px), not the full-resolution master file, to keep corpus size reasonable -- pixel content is real and unaltered, just not the maximum available resolution",
+  "license_short_name": "Public domain",
+  "usage_terms": "Public domain",
+  "retrieved": "2026-08-04T19:36:30Z"
+}

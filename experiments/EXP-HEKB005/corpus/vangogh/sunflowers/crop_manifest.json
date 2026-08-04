@@ -1,0 +1,20 @@
+{
+  "source_image": "image.jpg",
+  "source_image_size_px": [
+    2024,
+    2531
+  ],
+  "pixel_bbox_ltrb": [
+    731,
+    1912,
+    1406,
+    2222
+  ],
+  "bounding_box_normalized_ymin_xmin_ymax_xmax": [
+    0.7554,
+    0.3612,
+    0.8779,
+    0.6947
+  ],
+  "rationale": "the artist's signature \"Vincent\" painted onto the vase, unusual for van Gogh and specific to this series"
+}

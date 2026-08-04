@@ -433,3 +433,93 @@ Full results: `experiments/results/exp_hekb_004.json`.
 | B (spec doesn't match implementation) | None — `specification.md`'s own "Implementation Status" section documents the scope reduction. |
 | C (architectural decision, open) | Whether real audio/score/subtitle extraction should depend on a third-party library (`music21`, `soundfile`, `webvtt-py`) once real files exist, given this repository's `dependencies = []` convention. |
 | D (future experiment) | Real audio/score/subtitle/critique corpus for the 9 target works (blocking); real Graphify; real MCP transport; real homotopy algorithm — all unchanged, open gaps from EXP-HEKB001-003, none newly introduced here. |
+
+## EXP-HEKB005: visual multi-modal ingestion, real corpus (2026-08-05)
+
+Unlike EXP-HEKB004, this experiment's task explicitly required a real
+corpus, and one was built: `experiments/_visual_corpus_fetch.py` fetched
+real data, once, for 9 public-domain paintings (Leonardo da Vinci: Mona
+Lisa, Virgin of the Rocks, Saint John the Baptist; Johannes Vermeer: Girl
+with a Pearl Earring, The Milkmaid, View of Delft; Vincent van Gogh: The
+Starry Night, Sunflowers, Bedroom in Arles) from Wikipedia (CC BY-SA
+text), Wikidata (CC0 structured metadata), and Wikimedia Commons
+(`{{PD-Art}}` photographic reproductions — all 3 artists died 100+ years
+ago). Real crop regions were chosen by actually viewing each downloaded
+image and cropping a genuine sub-region with Pillow — a new `.venv`-only
+gate dependency (`uv pip install --python .venv/bin/python pillow`, not a
+declared `pyproject.toml` dependency, same pattern as `msr`/`cle` below).
+
+### Gate dependency: Pillow
+
+Installed editable-adjacent (a normal, non-editable install; there is no
+local Pillow source to develop against) into this repository's `.venv`,
+for `experiments/` use only. `src/hekb` remains dependency-free
+(`pyproject.toml`'s `dependencies = []` unchanged).
+
+### Real critique text: found for 6 of 9 works, honestly absent for 3
+
+Vasari's *Lives* (Project Gutenberg #28420) names "Monna Lisa"
+specifically in its real "LIFE OF LEONARDO DA VINCI" chapter (lines
+2975–3676 of the plain-text edition) but does not name "Virgin of the
+Rocks" or Leonardo's solo "Saint John the Baptist" panel anywhere in that
+same chapter (checked directly). The 1911 Encyclopaedia Britannica's real
+Vermeer entry (Wikisource `Page:EB1911 - Volume_18.djvu/90`, the
+Wikisource `1911 Encyclopædia Britannica/Meer, Jan van der` page is
+itself only a transclusion pointer to that real proofread Page:
+namespace text) names "View of Delft" and "the Milk-Woman" (The Milkmaid)
+explicitly, but never "Girl with a Pearl Earring" (a later-discovered
+work). Vincent van Gogh's own letters (Gutenberg #40393, a primary
+source, labelled as such) genuinely describe all 3 van Gogh works while
+he painted them — including a passage on "Bedroom in Arles" that
+describes almost the exact palette of the finished painting. No
+`critique.md` was written for the 3 works with no real match; the gap is
+recorded in `experiments/EXP-HEKB005/corpus/README.md` and `report.md`,
+not papered over. Net real corpus completeness: 42/45 observation points.
+
+### Reused unmodified
+
+- `_semantic_closure.compute_closure` (EXP-HEKB002) — the Visual
+  Observation Bundle Recovery Engine (`_visual_reconstruction.py`) adds
+  no new retrieval algorithm, only payload shaping and two
+  completeness/disambiguation calculations on top of its real output.
+  No vector or embedding search anywhere.
+
+### A real bug real data exposed
+
+The first implementation of cross-work technique-term search
+(`find_shared_technique_terms`) used each ingested `Observation`'s short,
+280-character `text_excerpt` and found zero shared terms, even though
+"sfumato" genuinely appears in all 3 Leonardo works' real Wikipedia text
+— because the excerpt was only the lead paragraph. Fixed by adding
+`full_text_for_work`, which separately reads each work's complete real
+`wiki.md`/`critique.md` content for full-text search. The same class of
+lesson EXP-HEKB003 drew from its record-id path-safety bug: real data
+exposes gaps a fixture-only test path does not.
+
+### Validated metrics
+
+| Property | Result |
+|---|---|
+| Real corpus completeness | 42 / 45 observation points present (93%) |
+| Observation Bundle Completeness C_obs(Q) / Weighted C_w(Q) (mean, 9 works) | **1.0 / 1.0** — complete by construction of the ingestion schema (every Observation is one real hop from its target); see `report.md` for why this is an honest result, not an inflated one |
+| Disambiguation, Test D (cross-artist) | **Pass** — 0 closure overlap between Mona Lisa and Girl with a Pearl Earring |
+| Disambiguation, Test D (same-artist, technique-linked) | **Pass at the observation level** — 0 overlap among real per-work files between Mona Lisa and Virgin of the Rocks; the only overlap is at the intentionally-shared `davinci`/`technique/sfumato` structural nodes, a correct cross-subject invariant, not a false merge |
+| Real cross-subject technique links found | `sfumato` (all 3 Leonardo works), `impasto` and `camera obscura` (both Vermeer works with real critique text) — found by a real, generic vocabulary search, not hand-picked |
+| Replay determinism | **Pass** |
+| Latency at scale | **Pass** — 57 real nodes, p99 0.084ms against a 15ms target |
+| Context economy ratio | 0.131 mean (target ≤ 0.15), reported honestly |
+| Visual Convergence Score (R_convergence) | **Not measured** — no real image-to-meaning measurement model exists anywhere in this workspace |
+| homotopy_hash / betti_numbers | **Not measured** — `cle.homotopy` still Protocol-only |
+| Cross-Subject Technique Invariant Precision (P_invariant), formal | **Not measured** — requires a query benchmark with known relevant/irrelevant results, which does not exist |
+| Single-fragment → target-id resolution | **Not implemented** — would require a real image-recognition model |
+
+Full results: `experiments/results/exp_hekb_005.json`.
+
+### Gap analysis summary
+
+| Priority | Finding |
+|---|---|
+| A (implementation defect) | None found. |
+| B (spec doesn't match implementation) | The specification's Artist→Work→Region→Technique hierarchy is ingested as Artist→Work (`creates`) and Work→Technique (`manifests`) directly, with no separate Region node — the real `ImageCrop` observation already serves that role. Documented, not silent. |
+| C (architectural decision, open) | `TECHNIQUE_VOCABULARY`'s 10 terms are a chosen, documented starting list, not derived from any corpus-driven extraction process. |
+| D (future experiment) | Real critique text for the 3 works still missing it; a real image-to-meaning measurement model; a real query benchmark for formal P_invariant; a real image-recognition model for single-fragment resolution — all genuinely absent, none invented here. |

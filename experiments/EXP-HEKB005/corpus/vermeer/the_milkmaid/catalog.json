@@ -1,0 +1,19 @@
+{
+  "wikidata_qid": "Q167605",
+  "wikidata_url": "https://www.wikidata.org/wiki/Q167605",
+  "source": "Wikidata (CC0)",
+  "retrieved": "2026-08-04T19:38:35Z",
+  "fields": {
+    "location": "Gallery of Honour",
+    "collection": "Rijksmuseum",
+    "inventory_number": "SK-A-2344",
+    "material_used": [
+      "canvas",
+      "oil paint"
+    ],
+    "height_cm": "45.5",
+    "width_cm": "41",
+    "inception": "+1660-00-00T00:00:00Z",
+    "creator": "Johannes Vermeer"
+  }
+}

@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — EXP-HEKB005 visual multi-modal ingestion (real corpus)
+
+`experiments/_visual_corpus_fetch.py` (one-time real fetcher: Wikipedia,
+Wikidata, Wikimedia Commons, plus real public-domain critique text from
+Vasari, the 1911 Encyclopaedia Britannica, and Vincent van Gogh's own
+letters), `experiments/_visual_observation_bundle.py` (visual Observation
+Bundle data model), `experiments/_real_visual_extractors.py` (real
+parsers over the cached corpus), `experiments/_visual_reconstruction.py`
+(the Visual Observation Bundle Recovery Engine, reusing EXP-HEKB002's
+`_semantic_closure.compute_closure` unmodified -- no vector or embedding
+search).
+
+Unlike EXP-HEKB004, this experiment's task required real data, and a real
+9-work corpus (Leonardo da Vinci, Johannes Vermeer, Vincent van Gogh) was
+fetched and ingested: 42 of 45 real observation points present (93%);
+Observation Bundle Completeness, disambiguation (Test D), replay
+determinism, and latency are real, measured results, all passing target.
+`visual_convergence_score`, formal cross-subject technique-invariant
+precision, and single-fragment-to-target resolution are honestly marked
+not-measured/not-implemented, each requiring a real model this workspace
+does not have. See `docs/RFC_ALIGNMENT.md` ("EXP-HEKB005: visual
+multi-modal ingestion, real corpus") and
+`experiments/EXP-HEKB005/report.md` for the full record. Pillow added as
+a `.venv`-only gate dependency (not a declared `pyproject.toml`
+dependency). `src/hekb` is unmodified.
+
 ### Added — EXP-HEKB004 multi-modal ingestion (design-stage only, implementation paused)
 
 `experiments/_observation_bundle.py` (Observation Bundle data model and

@@ -1,0 +1,19 @@
+{
+  "wikidata_qid": "Q185372",
+  "wikidata_url": "https://www.wikidata.org/wiki/Q185372",
+  "source": "Wikidata (CC0)",
+  "retrieved": "2026-08-04T19:38:30Z",
+  "fields": {
+    "location": "Mauritshuis",
+    "collection": "Mauritshuis",
+    "inventory_number": "670",
+    "material_used": [
+      "oil paint",
+      "canvas"
+    ],
+    "height_cm": "44.5",
+    "width_cm": "39",
+    "inception": "+1665-01-01T00:00:00Z",
+    "creator": "Johannes Vermeer"
+  }
+}

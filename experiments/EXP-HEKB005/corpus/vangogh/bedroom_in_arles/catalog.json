@@ -1,0 +1,16 @@
+{
+  "wikidata_qid": "Q724377",
+  "wikidata_url": "https://www.wikidata.org/wiki/Q724377",
+  "source": "Wikidata (CC0)",
+  "retrieved": "2026-08-04T19:38:58Z",
+  "fields": {
+    "material_used": [
+      "oil paint",
+      "canvas"
+    ],
+    "height_cm": "72",
+    "width_cm": "90",
+    "inception": "+1888-10-00T00:00:00Z",
+    "creator": "Vincent van Gogh"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "commons_file": "Vincent Willem van Gogh 128.jpg",
+  "commons_file_url": "https://commons.wikimedia.org/wiki/File:Vincent Willem van Gogh 128.jpg",
+  "downloaded_derivative_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Vincent_Willem_van_Gogh_128.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "requested_width_px": 2000,
+  "actual_downloaded_size_px": [
+    2024,
+    2531
+  ],
+  "real_full_original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Vincent_Willem_van_Gogh_128.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "real_full_original_size_px": [
+    2024,
+    2531
+  ],
+  "note": "downloaded a real Commons-generated derivative (requested 2000px wide; Commons served its nearest cached size, recorded in actual_downloaded_size_px), not the full-resolution master file, to keep corpus size reasonable -- pixel content is real and unaltered, just not the maximum available resolution",
+  "license_short_name": "Public domain",
+  "usage_terms": "Public domain",
+  "retrieved": "2026-08-04T19:38:56Z"
+}

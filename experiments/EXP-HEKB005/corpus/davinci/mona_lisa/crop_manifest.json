@@ -1,0 +1,20 @@
+{
+  "source_image": "image.jpg",
+  "source_image_size_px": [
+    3840,
+    5733
+  ],
+  "pixel_bbox_ltrb": [
+    1117,
+    544,
+    2465,
+    1977
+  ],
+  "bounding_box_normalized_ymin_xmin_ymax_xmax": [
+    0.0949,
+    0.2909,
+    0.3448,
+    0.6419
+  ],
+  "rationale": "the sitter face -- forehead, both eyes, nose, and the characteristic smile, the most-discussed detail in the painting's own critical literature (sfumato technique)"
+}

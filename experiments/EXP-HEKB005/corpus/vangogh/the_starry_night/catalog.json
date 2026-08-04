@@ -1,0 +1,22 @@
+{
+  "wikidata_qid": "Q45585",
+  "wikidata_url": "https://www.wikidata.org/wiki/Q45585",
+  "source": "Wikidata (CC0)",
+  "retrieved": "2026-08-04T19:38:48Z",
+  "fields": {
+    "location": "Museum of Modern Art",
+    "collection": "Museum of Modern Art",
+    "inventory_number": "472.1941",
+    "material_used": [
+      "oil paint",
+      "canvas"
+    ],
+    "height_cm": "73.7",
+    "width_cm": [
+      "92.1",
+      "36.25"
+    ],
+    "inception": "+1889-01-01T00:00:00Z",
+    "creator": "Vincent van Gogh"
+  }
+}

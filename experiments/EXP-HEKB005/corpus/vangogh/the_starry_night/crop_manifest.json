@@ -1,0 +1,20 @@
+{
+  "source_image": "image.jpg",
+  "source_image_size_px": [
+    3840,
+    3041
+  ],
+  "pixel_bbox_ltrb": [
+    1194,
+    597,
+    2644,
+    1621
+  ],
+  "bounding_box_normalized_ymin_xmin_ymax_xmax": [
+    0.1963,
+    0.3109,
+    0.533,
+    0.6885
+  ],
+  "rationale": "the central swirling cloud/sky spiral, the painting's most iconic and most-analyzed brushwork passage"
+}

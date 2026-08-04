@@ -1,0 +1,22 @@
+{
+  "wikidata_qid": "Q157541",
+  "wikidata_url": "https://www.wikidata.org/wiki/Q157541",
+  "source": "Wikidata (CC0)",
+  "retrieved": "2026-08-04T19:38:53Z",
+  "fields": {
+    "location": [
+      "Philadelphia Museum of Art",
+      "Van Gogh Museum",
+      "Sompo Museum of Art",
+      "private collection"
+    ],
+    "material_used": [
+      "oil paint",
+      "canvas"
+    ],
+    "height_cm": "95",
+    "width_cm": "73",
+    "inception": "+1888-00-00T00:00:00Z",
+    "creator": "Vincent van Gogh"
+  }
+}
