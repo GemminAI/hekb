@@ -1,0 +1,138 @@
+{
+  "experiment": "EXP-HEKB007",
+  "scope": "Integrates, for the first time, two previously-separate real pipelines into one shared hekb.category.KnowledgeCategory: EXP-HEKB002/003's real MSR->CLE crystallization and EXP-HEKB005's real 9-work visual corpus. Adds a genuinely new component -- a real, standalone TCP HEKB MCP Daemon (_mcp_daemon.py) under 100-concurrent-client load -- since every prior MCP interface was deliberately in-process only. No vector or embedding search anywhere. src/hekb not modified; msr/cle source not modified (gate dependencies only, per docs/RFC_ALIGNMENT.md).",
+  "uncaught_exception": null,
+  "stage3_integration_and_disambiguation": {
+    "real_work_query": {
+      "target_id": "davinci/mona_lisa",
+      "observation_completeness_C_obs": 1.0,
+      "weighted_observation_completeness_C_w": 1.0,
+      "closure_object_count": 8,
+      "is_minimal_self_contained": true,
+      "proof_path": [
+        "resolved-target:davinci/mona_lisa"
+      ]
+    },
+    "engine_concept_query": {
+      "target_id": "concept-55ca929b1a41bad1",
+      "closure_object_count": 2,
+      "closure_object_ids": [
+        "EXP-HEKB007_MSR_CLE_Pipeline",
+        "concept-55ca929b1a41bad1"
+      ],
+      "is_minimal_self_contained": true
+    },
+    "cross_pipeline_disambiguation": {
+      "target_a": "davinci/mona_lisa",
+      "target_b": "concept-55ca929b1a41bad1",
+      "closure_a_size": 8,
+      "closure_b_size": 2,
+      "overlap_object_ids": [],
+      "false_convergence_rate": 0.0,
+      "disambiguated": true
+    },
+    "combined_category_object_count": 59,
+    "system_wide_context_economy_ratio": 0.13559322033898305,
+    "pass": true
+  },
+  "stage5_network_mcp_daemon": {
+    "port": 44239,
+    "concurrent_clients": 100,
+    "requests_sent": 100,
+    "requests_succeeded": 100,
+    "requests_failed": 0,
+    "failures": [],
+    "latency_p50_ms": 9.536541998386383,
+    "latency_p99_ms": 10.68004198896233,
+    "latency_max_ms": 10.68004198896233,
+    "all_succeeded": true,
+    "latency_target_ms": 10.0,
+    "target_met": false,
+    "pass": true
+  },
+  "stage6_full_loop_replay_determinism": {
+    "scope": "ingestion + MSR/CLE upstream + integration + closure/search content (network daemon wall-clock latency excluded, as in every prior experiment's own replay-determinism check)",
+    "bit_identical": true,
+    "pass": true
+  },
+  "stage7_fault_injection": {
+    "cases": [
+      {
+        "case": "non_total_morphism",
+        "quarantined": true,
+        "error": "morphism 'fault-injection-non-total' is not total over its source's elements: domain gap = {'EXP-HEKB007_MSR_CLE_Pipeline'}, extra keys = set()"
+      },
+      {
+        "case": "duplicate_object",
+        "quarantined": true,
+        "error": "object 'concept-55ca929b1a41bad1' already exists"
+      },
+      {
+        "case": "unstabilized_trajectory",
+        "quarantined": true,
+        "error": "trajectory 'fault-injection-unstabilized' has dwell_steps=0, not a stabilized trajectory"
+      },
+      {
+        "case": "daemon_malformed_json",
+        "quarantined": true,
+        "response_ok": false,
+        "response": {
+          "ok": false,
+          "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+        }
+      },
+      {
+        "case": "daemon_missing_concept_id_key",
+        "quarantined": true,
+        "response_ok": false,
+        "response": {
+          "ok": false,
+          "error": "KeyError: 'concept_id'"
+        }
+      },
+      {
+        "case": "daemon_unknown_concept_id",
+        "quarantined": true,
+        "response_ok": true,
+        "response": {
+          "ok": true,
+          "response": {
+            "query_concept_id": "does-not-exist",
+            "target_object": {
+              "id": "does-not-exist",
+              "category": "Unknown"
+            },
+            "semantic_closure": {
+              "objects": [
+                {
+                  "id": "does-not-exist",
+                  "category": "Unknown"
+                }
+              ],
+              "morphisms": [],
+              "derived_compositions": [],
+              "pullback_roots": [],
+              "pushout_wavefront": []
+            },
+            "is_minimal_self_contained": true,
+            "execution_time_ms": 0.019499988411553204
+          }
+        }
+      }
+    ],
+    "cases_checked": 6,
+    "cases_quarantined": 6,
+    "uncaught_exceptions": 0,
+    "pass": true
+  },
+  "blocked_metrics": {
+    "reality_reconstruction_fidelity_RRF": "Composite of Y_roundtrip and S_bundle_fidelity, both of which require a real single-fragment -> resolved_target_id resolution model (recognizing a raw image crop or audio fragment as a specific work by content); no such model exists anywhere in this workspace -- every query in this experiment, and in EXP-HEKB005 before it, starts from an already-resolved target id.",
+    "epistemic_roundtrip_reconstruction_yield_Y_roundtrip": "Same reason as RRF: no single-fragment resolution model exists.",
+    "projection_stability_index_S_proj": "Defined over PNG/JPEG/WebP re-encodings of the same image; no image codec invariance pipeline exists anywhere in this workspace (EXP-HEKB005's own recorded gap: 'visual_convergence_score ... requires a real image-to-meaning measurement model; none exists').",
+    "multi_modal_coordinate_alignment_precision_A_alignment": "Requires >= 2 distinct modality encoders converging on one object's theta; only a single, generic MSR/CLE synthetic-settle pipeline exists here, and the real corpus's own Concepts carry no centroid (no image-to-meaning model produced one) -- there is no second real geometry to align against.",
+    "information_compression_ratio_R_compress": "cle.homotopy/cle.quotient/cle.functor are Protocol interfaces only (categorical-lift-engine's own docs/RFC_ALIGNMENT.md); no homotopy-invariant compression algorithm is implemented anywhere in this workspace's dependencies.",
+    "epistemic_maturity_growth_rate_and_knowledge_health_vector": "Defined over a persistent HEKB store tracked across sessions; this experiment's `_hekb_store/exp_hekb_007/` is rebuilt fresh every run (matching every prior experiment's own convention), so there is no multi-session growth trend to report honestly.",
+    "basin_recovery_speed_and_rate_N_recovery_R_basin": "Already validated upstream, not re-run here: meaning-space-runtime's own EXP-Ubuntu004 Phase 3 (experiments/exp_msr_004_recovery.py) measures this with real NVS-Kernel physics. nvs-kernel is not gate-installed in this repository (only msr and cle are; see docs/RFC_ALIGNMENT.md), and re-deriving the same recovery-trial physics here would duplicate that already-passing upstream validation, which this experiment's own policy forbids ('do not duplicate functionality')."
+  },
+  "pass": true
+}

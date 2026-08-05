@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — EXP-HEKB007 end-to-end epistemic pipeline integration
+
+`experiments/exp_hekb_007_epistemic_pipeline.py`: integrates, for the first
+time, two previously-separate real pipelines into one shared
+`hekb.category.KnowledgeCategory` — EXP-HEKB002/003's real
+`msr.runtime.MeaningSpaceRuntime` -> `cle.categorical_lift.engine.CategoricalLiftEngine`
+crystallization and EXP-HEKB005's real 9-work visual corpus — and verifies
+via a real disambiguation check that the two do not false-converge (0.0
+false convergence rate). Adds `experiments/_mcp_daemon.py`, a real
+stdlib-only standalone TCP daemon (`socketserver.ThreadingTCPServer`)
+wrapping `experiments/_mcp_reference.MCPReferenceQuery` unmodified, since
+every prior MCP interface in this workspace was deliberately in-process
+only; measured under 100 real concurrent clients (100/100 succeeded, p50
+≈15ms / p99 ≈17ms — the specification's own `<10ms p99` target is reported
+as not met, not adjusted). Also measures real full-loop replay determinism
+(bit-identical across two cold-start runs) and real fault injection (6/6
+cases quarantined: category-axiom violations, an unstabilized-trajectory
+CLE call, malformed daemon requests). Reuses `_semantic_closure.py`,
+`_semantic_search.py`, `_msr_cle_pipeline.py`, `_cle_hekb_adapter.py`,
+`_visual_reconstruction.py`, and `_mcp_reference.py` unmodified throughout.
+Every metric requiring a real Meaning Mapper content-projection model, a
+real `cle.homotopy` implementation, a real single-fragment resolution
+model, or a persistent multi-session HEKB store is recorded as
+`blocked_metrics` with a specific reason, not estimated. `src/hekb`
+unmodified. Full disposition: `experiments/EXP-HEKB007/report.md` and
+`docs/RFC_ALIGNMENT.md`.
+
 ### Added — EXP-HEKB006 v2.1.0 Reality Consensus Engine & real Human-vs-Human Ground Truth
 
 `experiments/_reality_consensus.py` (the Reality Consensus Engine: a

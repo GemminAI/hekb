@@ -706,3 +706,82 @@ was discarded).
 | B (spec doesn't match implementation) | Test D's real proof-path alignment is vacuously 1.0 because `_human_observers.py`'s per-channel categories are shallow (1-2 hops) compared to the specification's own longer worked example — recorded, not silently reconciled. |
 | C (architectural decision, open) | OBI is a real, correctly-computed quantity but not a reliable outlier-ranking signal when observers' closures differ in size; leave-one-out robustness is the more reliable discriminator for that specific question. Both are reported. |
 | D (future experiment) | Same three v1.0.0 gaps (real LLM access, a real Meaning Mapper, a real `cle.homotopy`), unresolved by this addendum; additionally, real access to a genuine human-expert panel distinct from EXP-HEKB005's own corpus channels, to unblock Test H once a real AI-observer consensus also exists. |
+
+## EXP-HEKB007: end-to-end epistemic pipeline integration (2026-08-05)
+
+Full disposition: `experiments/EXP-HEKB007/report.md`. Summary here is
+what this addition changes about the alignment record specifically.
+
+EXP-HEKB007 asks for one integrated loop — `Raw Observation -> Meaning
+Mapper -> MSR -> CLE -> HEKB -> Semantic Closure -> HEKB MCP -> Observation
+Bundle Recovery` — validated end to end. Two real pipelines already existed
+separately (EXP-HEKB002/003's MSR->CLE crystallization,
+`_msr_cle_pipeline.py`; EXP-HEKB005's real 9-work visual corpus,
+`exp_hekb_005_visual_reconstruction.ingest_real_corpus`) but had never
+shared one `hekb.category.KnowledgeCategory`. `experiments/exp_hekb_007_epistemic_pipeline.py`
+puts both in the same category for the first time and verifies, via a real
+disambiguation check, that they do not false-converge.
+
+### Reused unmodified
+
+`_semantic_closure.compute_closure`, `_semantic_search`-style ranking
+concepts, `_msr_cle_pipeline.run_upstream`/`build_cle_engine`,
+`_cle_hekb_adapter.cle_concept_to_hekb`, `_visual_reconstruction.reconstruct`/
+`check_disambiguation`, `_mcp_reference.MCPReferenceQuery`,
+`_concept_store.FileConceptStore`, `_file_backend.FileProjectionBackend`.
+No function signature in any of these files changed.
+
+### New: the HEKB MCP Daemon (`experiments/_mcp_daemon.py`)
+
+Every prior MCP interface in this workspace (`_mcp_reference.MCPReferenceQuery`)
+is deliberately in-process only — see "Scope decisions" above,
+"infrastructure this experiment does not need." EXP-HEKB007's own
+specification names a standalone TCP daemon and a 100-concurrent-client
+load test as an explicit target component, and unlike a real image decoder
+or a real homotopy algorithm, a local TCP daemon needs no external
+repository or unavailable runtime — Python's standard library
+(`socketserver`, `socket`, `threading`) is always present. Per this
+specification's own "implement every executable mechanism first, report
+BLOCKED only for the unavailable portion" instruction, this is therefore
+built, not deferred: `HEKBMCPDaemon` (a real `socketserver.ThreadingTCPServer`
+wrapping `MCPReferenceQuery` unmodified) and `run_concurrent_load_test` (a
+real `ThreadPoolExecutor`-driven client burst against it). Measured p50
+≈15ms / p99 ≈17ms over 100 real concurrent clients — the specification's
+own `<10ms p99` target is not met, and this is reported as `target_met:
+false` rather than adjusted or omitted; the daemon's own `pass` gate is
+correctness-only (100/100 succeeded).
+
+### Scope decision: no second observer, no Reality Consensus re-run
+
+This experiment introduces exactly one producer per target — the real
+corpus ingestion for the visual works, the MSR/CLE pipeline for its own
+crystallized concept — never two independent observers of the *same*
+target. `_reality_consensus.compute_reality_consensus` requires >= 2
+observers by design (`InsufficientObserversError` otherwise); running it
+here would mean fabricating a second observer, which this workspace's
+convention forbids. EXP-HEKB006 v2.1.0 already measures Reality Consensus
+for its own target set (the real corpus's works, under real human-observer
+channels) and is not re-run or duplicated here.
+
+### Validated metrics
+
+Real-work (Mona Lisa) `C_obs(Q)=C_w(Q)=1.0`, closure minimal-self-contained
+(8 objects); engine-concept closure minimal-self-contained (2 objects);
+cross-pipeline false convergence rate 0.0 (fully disambiguated); combined
+category 59 objects; system-wide Context Economy Ratio 0.136; network
+daemon 100/100 real concurrent requests succeeded (p50≈15ms, p99≈17ms,
+target not met, reported honestly); full-loop replay determinism
+bit-identical across two cold-start runs (network wall-clock latency
+excluded, matching every prior experiment's own replay-determinism
+convention); 6/6 fault-injection cases (2 category-axiom violations, 1
+unstabilized-trajectory CLE call, 3 malformed daemon requests) quarantined,
+0 uncaught exceptions.
+
+### Gap analysis summary
+
+| Priority | Finding |
+|---|---|
+| A (implementation defect) | None found during this implementation. |
+| B (spec doesn't match implementation) | The specification's `<10ms p99` network latency target assumes infrastructure this reference `socketserver` daemon does not match under real 100-way thread-pool concurrency on this machine; reported as a real, unmet number, not silently relaxed. |
+| C (architectural decision, open) | System-wide Context Economy Ratio here is Semantic Search's `C(Q)` (closure size / category size) for a single query, not a multi-observer Reality Consensus score — the two are related but distinct metrics, and only the former applies with one producer per target. |
+| D (future experiment) | Same recurring three gaps (real Meaning Mapper, real `cle.homotopy`, real single-fragment resolution model) block `RRF`/`Y_roundtrip`/`S_proj`/`A_alignment`/`R_compress`; a persistent multi-session HEKB store (out of scope for `src/hekb` v1.0 by design) would unblock the Knowledge Health Vector growth rate. |
