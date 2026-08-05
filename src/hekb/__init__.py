@@ -19,6 +19,7 @@ from hekb.category import (
     encode_pair,
 )
 from hekb.models import Concept, EpistemicGraphSnapshot, KnowledgeRelation, StorageProfile
+from hekb.query import GeodesicPath, QueryHit
 from hekb.runtime import HEKBCoreRuntime
 from hekb.storage import InMemoryProjectionBackend, ProjectionBackend, to_storage_profile
 
@@ -38,12 +39,14 @@ __all__ = [
     "CategoryAxiomViolation",
     "Concept",
     "EpistemicGraphSnapshot",
+    "GeodesicPath",
     "HEKBCoreRuntime",
     "HomotopyViolation",
     "InMemoryProjectionBackend",
     "KnowledgeCategory",
     "KnowledgeRelation",
     "ProjectionBackend",
+    "QueryHit",
     "StorageProfile",
     "compose_all",
     "decode_function",

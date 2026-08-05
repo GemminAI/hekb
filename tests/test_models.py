@@ -1,3 +1,5 @@
+import pytest
+
 from hekb.models import Concept, EpistemicGraphSnapshot, KnowledgeRelation, StorageProfile
 
 
@@ -10,6 +12,16 @@ def test_concept_holds_element_set() -> None:
 def test_knowledge_relation_holds_mapping() -> None:
     relation = KnowledgeRelation(id="f", source="A", target="B", mapping={"a1": "b1"})
     assert relation.mapping == {"a1": "b1"}
+
+
+def test_knowledge_relation_defaults_to_uniform_cost() -> None:
+    relation = KnowledgeRelation(id="f", source="A", target="B", mapping={})
+    assert relation.cost == 1.0
+
+
+def test_knowledge_relation_rejects_a_negative_cost() -> None:
+    with pytest.raises(ValueError, match="non-negative"):
+        KnowledgeRelation(id="f", source="A", target="B", mapping={}, cost=-1.0)
 
 
 def test_storage_profile_matches_declarative_shape() -> None:

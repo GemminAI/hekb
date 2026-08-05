@@ -11,6 +11,10 @@ from __future__ import annotations
 
 from hekb.category import HomotopyViolation, KnowledgeCategory
 from hekb.models import Concept, EpistemicGraphSnapshot, KnowledgeRelation
+from hekb.query import GeodesicPath, QueryHit
+from hekb.query import geodesic as _geodesic
+from hekb.query import nearest as _nearest
+from hekb.query import neighbours as _neighbours
 from hekb.storage import ProjectionBackend, to_storage_profile
 
 
@@ -66,6 +70,18 @@ class HEKBCoreRuntime:
             vertices=tuple(self._category.objects.values()),
             edges=tuple(self._category.morphisms.values()),
         )
+
+    def nearest(self, position: tuple[float, ...], count: int) -> tuple[QueryHit, ...]:
+        """The `count` closest concepts to `position`. See :func:`hekb.query.nearest`."""
+        return _nearest(self._category, position, count)
+
+    def neighbours(self, concept_id: str) -> tuple[KnowledgeRelation, ...]:
+        """Every morphism out of `concept_id`. See :func:`hekb.query.neighbours`."""
+        return _neighbours(self._category, concept_id)
+
+    def geodesic(self, source_id: str, target_id: str) -> GeodesicPath:
+        """Minimum-cost path `source_id -> target_id`. See :func:`hekb.query.geodesic`."""
+        return _geodesic(self._category, source_id, target_id)
 
 
 __all__ = ["HEKBCoreRuntime", "HomotopyViolation"]

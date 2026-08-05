@@ -45,6 +45,9 @@ class KnowledgeRelation:
     :meth:`hekb.category.KnowledgeCategory.add_morphism`, not by this
     dataclass itself, so a ``KnowledgeRelation`` can be constructed and
     validated against a specific category.
+
+    ``cost`` weights this edge for shortest-path query (:mod:`hekb.query`);
+    it carries no algebraic meaning of its own and defaults to a uniform 1.0.
     """
 
     id: str
@@ -52,6 +55,11 @@ class KnowledgeRelation:
     target: str
     mapping: dict[str, str]
     invariants: dict[str, float] = field(default_factory=dict)
+    cost: float = 1.0
+
+    def __post_init__(self) -> None:
+        if self.cost < 0.0:
+            raise ValueError("cost must be non-negative")
 
 
 @dataclass(frozen=True, slots=True)

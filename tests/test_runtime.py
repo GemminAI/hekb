@@ -68,3 +68,23 @@ def test_export_epistemic_graph_is_a_frozen_snapshot() -> None:
 
     assert len(snapshot_1.vertices) == 1
     assert len(snapshot_2.vertices) == 2  # later mutation doesn't retroactively change snapshot_1
+
+
+def test_nearest_neighbours_and_geodesic_delegate_to_the_category() -> None:
+    backend = InMemoryProjectionBackend()
+    runtime = HEKBCoreRuntime(backend)
+    runtime.ingest_object(Concept(id="A", elements=frozenset({"a1"}), centroid=(0.0, 0.0)))
+    runtime.ingest_object(Concept(id="B", elements=frozenset({"b1"}), centroid=(1.0, 0.0)))
+    runtime.ingest_morphism(
+        KnowledgeRelation(id="f", source="A", target="B", mapping={"a1": "b1"}, cost=2.0)
+    )
+
+    hits = runtime.nearest((0.0, 0.0), 2)
+    assert [hit.concept.id for hit in hits] == ["A", "B"]
+
+    edges = runtime.neighbours("A")
+    assert [edge.id for edge in edges] == ["f"]
+
+    path = runtime.geodesic("A", "B")
+    assert path.concept_ids == ("A", "B")
+    assert path.total_cost == pytest.approx(2.0)
