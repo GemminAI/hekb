@@ -523,3 +523,186 @@ Full results: `experiments/results/exp_hekb_005.json`.
 | B (spec doesn't match implementation) | The specification's Artist→Work→Region→Technique hierarchy is ingested as Artist→Work (`creates`) and Work→Technique (`manifests`) directly, with no separate Region node — the real `ImageCrop` observation already serves that role. Documented, not silent. |
 | C (architectural decision, open) | `TECHNIQUE_VOCABULARY`'s 10 terms are a chosen, documented starting list, not derived from any corpus-driven extraction process. |
 | D (future experiment) | Real critique text for the 3 works still missing it; a real image-to-meaning measurement model; a real query benchmark for formal P_invariant; a real image-recognition model for single-fragment resolution — all genuinely absent, none invented here. |
+
+## EXP-HEKB006: cross-model epistemic invariance, blocked on observer access (2026-08-05)
+
+EXP-HEKB006's specification (v1.0.0, `experiments/EXP-HEKB006/specification.md`)
+asks whether 7 named LLM observer engines (Gemma, Qwen, Llama, Mistral,
+Claude, GPT, Gemini), after passing through Meaning Mapper → MSR → CLE,
+converge onto the same HEKB invariant structure for a shared target
+object — reusing EXP-HEKB002's Semantic Closure Engine, EXP-HEKB003's
+Semantic Search Engine, and the real corpora EXP-HEKB003/004/005 already
+prepared.
+
+**Repository audit finding**: a real environment probe
+(`experiments/_observer_adapter.py`, `probe_observer_availability`) found
+**0 of the 7 named observer engines callable in this workspace** — no
+local model runtime (`ollama` binary not on `PATH`; `llama_cpp` not
+importable) for Gemma/Qwen/Llama/Mistral, and no API credential
+(`ANTHROPIC_API_KEY`/`OPENAI_API_KEY`/`GOOGLE_API_KEY`/`GEMINI_API_KEY`)
+for Claude/GPT/Gemini. This is a repository-boundary finding, not an
+implementation gap: there is no real observer to call.
+
+**Scope decision** (per the specification's own "do not fabricate"
+instruction): implementation stopped at the design/mechanism layer — the
+`ObserverAdapter` Protocol boundary and real availability probe
+(`_observer_adapter.py`), honest per-observer call orchestration with
+`NotImplementedError` reference stubs rather than fabricated text
+(`_cross_model_runner.py`), and the new Cross-Model Comparison Engine
+(`_cross_model_compare.py`), verified against an abstract,
+explicitly-labeled `MechanismTest_*` fixture rather than real observer
+output. See `experiments/EXP-HEKB006/report.md` for the full record.
+
+### Reused unmodified
+
+- `_semantic_closure.compute_closure` (EXP-HEKB002) — every
+  `_cross_model_compare.py` metric operates on its already-computed
+  `SemanticClosure` output; no new retrieval algorithm, no vector or
+  embedding search anywhere.
+- The real corpora EXP-HEKB003 (software artifacts), EXP-HEKB004
+  (multimodal, still 0/45), and EXP-HEKB005 (visual, 42/45) already
+  discovered/ingested — Stage 2 calls their existing discovery/survey
+  functions as-is (`_real_visual_extractors.discover_visual_corpus`,
+  `_multimodal_corpus.discover_corpus`, `_real_corpus.build_real_property_graph`),
+  re-fetching or re-deriving nothing.
+
+### New: the Cross-Model Comparison Engine (`_cross_model_compare.py`)
+
+Pure structural comparison over two real `SemanticClosure`s: a Jaccard
+`closure_structure_similarity`, a symmetric-difference-based
+`morphism_graph_edit_distance` proxy (a chosen, documented approximation,
+not a minimum-cost graph-isomorphism search), `pullback_pushout_identity_rate`
+(Jaccard over `pullback_roots`/`pushout_wavefront`), an exact
+dynamic-programming `proof_path_alignment` (normalized LCS), and
+`invariant_identity` — `None` (NOT MEASURED) whenever either side lacks a
+real `homotopy_hash`, true for every signature in this workspace today
+since `cle.homotopy` is still Protocol-only, the same gap EXP-HEKB002-005
+already recorded. `completeness_variance`/`latency_variance_ms` return
+`None` below 2 real per-observer values rather than a misleading `0.0`.
+
+### Validated metrics
+
+| Property | Result |
+|---|---|
+| Observer availability (7 engines, real check) | 0/7 available — no local runtime, no API credential for any engine |
+| Corpus inventory reuse (EXP-HEKB003/004/005) | Real: visual 42/45, multimodal 0/45, software-artifact 115 nodes/213 edges |
+| Per-observer call attempts (7 engines) | 7/7 honestly failed, each with a specific real reason; 0 fabricated |
+| Mechanism verification (abstract, non-model fixture) | Pass — identical-structure pair scores 1.0/0.0/1.0/1.0/None; divergent-structure pair scores 0.143/0.857/0.5, correctly discriminating |
+| Specification section III's 7 target metrics | **NOT MEASURED** — every one requires >=2 real per-observer closures/signatures; 0 real observers exist |
+| Overall experiment | `"pass": false` — honestly reported as blocked, not failed |
+
+Full results: `experiments/results/exp_hekb_006.json`.
+
+### Gap analysis summary
+
+| Priority | Finding |
+|---|---|
+| A (implementation defect) | None found. |
+| B (spec doesn't match implementation) | None — `specification.md`'s own "Implementation Status" section documents the scope reduction. |
+| C (architectural decision, open) | `morphism_graph_edit_distance`'s symmetric-difference normalization is a chosen approximation, not an exact minimum-cost graph edit distance. |
+| D (future experiment) | Real access to >=2 of the 7 named observer engines (blocking); a real Meaning Mapper (blocks ingestion even once observer text exists); a real `cle.homotopy` implementation (blocks `I_cross_model` specifically) — all genuinely absent, none invented here. |
+
+## EXP-HEKB006 v2.1.0: the Reality Consensus Engine (2026-08-05)
+
+A revised specification (v2.1.0) reframes EXP-HEKB006's primary objective
+away from "do 7 LLMs converge" (v1.0.0, above) to: "constructing a
+model-agnostic Reality Consensus Engine" — a Pullback Limit over typed
+morphisms, $S_{\text{consensus}}(Q) = \varprojlim_k S(Q)^{(M_k)}$ — plus a
+real Human-vs-Human Ground Truth (Phase 1, before any AI observer). The
+v2.1.0 specification explicitly instructs execution to continue past
+observer unavailability: "Observer APIs are optional... execute all
+deterministic mechanisms... report only the unavailable
+observer-dependent metrics as BLOCKED."
+
+### New: the Reality Consensus Engine (`experiments/_reality_consensus.py`)
+
+A K-way (not just pairwise) generalization of `_cross_model_compare.py`'s
+own set-arithmetic conventions: `compute_reality_consensus` (the Pullback
+Limit itself — intersection/union of every observer's real
+object-id/typed-morphism-triple sets, R_consensus = ratio of the two),
+`observer_bias_index` (OBI — the fraction of one observer's own closure
+lying outside the agreed consensus core), `leave_one_out_robustness`
+(Jaccard agreement between the full-K consensus core and the core with
+one observer held out), `false_convergence_check` (two different real
+targets' consensus sets must not overlap outside real, verified shared
+structural nodes), and `anonymize` (Test F: consensus arithmetic must not
+depend on an observer's label). No new retrieval algorithm; every
+function operates on already-computed `_semantic_closure.SemanticClosure`
+values (EXP-HEKB002, reused unmodified).
+
+### New: real Human-vs-Human Ground Truth (`experiments/_human_observers.py`)
+
+This workspace has no live human-expert panel, but EXP-HEKB005's real
+corpus already contains 3 independently-authored real channels for the
+same real target objects: `critique.md` (a named human critic — Vasari,
+the 1911 Encyclopaedia Britannica, or Vincent van Gogh's own letters,
+present for 6/9 works), `wiki.md` (Wikipedia's editorial community, 9/9),
+and `catalog.json` (Wikidata's curatorial metadata, 9/9). Each channel is
+re-partitioned into its own real, separate `_semantic_closure.SemanticClosure`
+— a legitimate re-partitioning of already-real, already-ingested data
+(EXP-HEKB005), not fabrication: no new corpus is fetched, no text is
+generated, and each channel's cross-work technique links are found only
+in that channel's own real text (`_visual_reconstruction.find_shared_technique_terms`,
+reused unmodified).
+
+### New: the unified Observer Registry (`experiments/_observer_registry.py`)
+
+10 registered observers (3 real human channels + the 7 named LLM engines
+from `_observer_adapter.py`, v1.0.0, reused unmodified), 3/10 available —
+the 3 human channels, checked from real corpus files; 0/7 LLM engines,
+the same real finding v1.0.0 already recorded, unchanged.
+
+### Repository audit finding (unchanged from v1.0.0)
+
+0 of the 7 named LLM observer engines remain callable in this workspace.
+This real finding governs which v2.1.0 metrics are `BLOCKED`: Test B
+(open-weights vs. proprietary), Test H (AI-observer consensus vs. human
+ground truth — needs a real AI-observer consensus closure that does not
+exist), and Test G's specification-target `>= 5` independent observers
+(the real human plane provides at most 3 per work).
+
+### Validated metrics (v2.1.0)
+
+| Property | Result |
+|---|---|
+| Phase 1: works with >= 2 real human observers | 9/9 (6/9 have all 3 channels) |
+| Phase 1: mean / min Consensus Reality Score | 0.314 / 0.231 |
+| Phase 2: registry size / available | 10 / 3 |
+| Phase 3: mechanism verification | Pass — Pullback Limit, OBI, leave-one-out robustness, blind-anonymization invariance, false-convergence guard all wired correctly on an abstract `MechanismTest_*` fixture |
+| Test A (Direct Observer Inter-Consistency) | Measured (human plane) — mean R_consensus 0.314; LLM plane BLOCKED |
+| Test B (Open-Weights vs Proprietary) | BLOCKED — 0/7 |
+| Test C (Cross-Observer Pullback Derivation) | Pass — real `technique/sfumato`, `technique/camera_obscura`, `technique/impasto` nodes found across real work pairs |
+| Test D (Proof Path Equivalence) | Measured — mean alignment 1.000 (shallow per-channel ingestion; see report.md) |
+| Test E / Test J (Disambiguation / Cross-Object Separation) | Pass — 36/36 real work pairs disambiguated, 0.0% false convergence |
+| Test F (Blind Observer Independence) | Pass — consensus numerically invariant to observer-label anonymization |
+| Test G (Reality Consensus Engine Integration) | Partially measured — real plane caps at 3 observers/work vs. specification's >= 5 target; mechanism independently verified at exactly 5 synthetic observers |
+| Test H (Human Expert Consensus Agreement) | BLOCKED — no real AI-observer consensus closure exists |
+| Test I (Leave-One-Out Robustness) | Pass — mean robustness 1.000 across the 6 works with all 3 real channels |
+| Overall | `"pass": true` — every measurable mechanism/consensus check on the real human plane passed |
+
+Full results: `experiments/results/exp_hekb_006.json` (now contains both
+the v2.1.0 result at top level and the full v1.0.0 cross-model result
+embedded under `cross_model_observer_plane_v1_0_0` — no earlier finding
+was discarded).
+
+### Two implementation bugs found and fixed during verification
+
+1. Phase 3's original divergence check ranked observers by Observer Bias
+   Index, which is a *fraction of an observer's own content* — a smaller
+   divergent closure can score numerically lower OBI than a larger
+   agreeing one, an invalid ranking. Fixed by discriminating divergence
+   via leave-one-out robustness instead, which is size-invariant.
+2. Test E/J's legitimate-overlap whitelist originally checked only the
+   `Human_Wiki` channel's own technique links, incorrectly flagging
+   `technique/impasto` (found only in `Human_Critique`'s own real text
+   for the two Vermeer works) as a false convergence. Fixed by combining
+   every real channel's technique links before building the whitelist.
+
+### v2.1.0 gap analysis summary
+
+| Priority | Finding |
+|---|---|
+| A (implementation defect) | Two found and fixed during this same implementation (above) — none remaining. |
+| B (spec doesn't match implementation) | Test D's real proof-path alignment is vacuously 1.0 because `_human_observers.py`'s per-channel categories are shallow (1-2 hops) compared to the specification's own longer worked example — recorded, not silently reconciled. |
+| C (architectural decision, open) | OBI is a real, correctly-computed quantity but not a reliable outlier-ranking signal when observers' closures differ in size; leave-one-out robustness is the more reliable discriminator for that specific question. Both are reported. |
+| D (future experiment) | Same three v1.0.0 gaps (real LLM access, a real Meaning Mapper, a real `cle.homotopy`), unresolved by this addendum; additionally, real access to a genuine human-expert panel distinct from EXP-HEKB005's own corpus channels, to unblock Test H once a real AI-observer consensus also exists. |

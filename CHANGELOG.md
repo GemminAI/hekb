@@ -7,6 +7,71 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added — EXP-HEKB006 v2.1.0 Reality Consensus Engine & real Human-vs-Human Ground Truth
+
+`experiments/_reality_consensus.py` (the Reality Consensus Engine: a
+Pullback Limit / K-way intersection of typed morphisms over any number of
+real `_semantic_closure.SemanticClosure` values, plus Observer Bias
+Index, leave-one-out robustness, blind-anonymization invariance, and a
+false-convergence guard -- pure set arithmetic, no new retrieval, no
+vector/embedding search), `experiments/_human_observers.py` (Phase 1's
+real Human-vs-Human Ground Truth: 3 independently-authored real channels
+-- `critique.md`, `wiki.md`, `catalog.json` -- already in EXP-HEKB005's
+real corpus, re-partitioned into 3 separate real per-channel closures; no
+new corpus fetched, no text generated), `experiments/_observer_registry.py`
+(a unified registry spanning the real human-channel plane and the 7 named
+LLM engines from EXP-HEKB006 v1.0.0's `_observer_adapter.py`, reused
+unmodified), and `experiments/exp_hekb_006_reality_consensus.py` (the
+v2.1.0 orchestrator: Phases 1-4 and Tests A-J, embedding v1.0.0's
+`exp_hekb_006_cross_model.run()` output whole as
+`cross_model_observer_plane_v1_0_0` rather than re-deriving its still-real
+0/7-named-LLM-engine finding).
+
+Per the v2.1.0 specification's own scope decision ("Observer APIs are
+optional... execute all deterministic mechanisms... report only the
+unavailable observer-dependent metrics as BLOCKED"), this addition is
+measured, not blocked: all 9 real EXP-HEKB005 works have >= 2 real human
+observers (6/9 have all 3), mean Consensus Reality Score 0.314, Phase 3's
+abstract mechanism verification passes (Pullback Limit, OBI, leave-one-out
+robustness, blind-anonymization invariance, and the false-convergence
+guard all wired correctly), and Tests A/C/D/E/F/I/J pass on real data (36
+real work-pairs disambiguated at 0.0% false convergence; real shared
+`technique/sfumato`, `technique/camera_obscura`, `technique/impasto`
+nodes found and correctly whitelisted, not merged). Tests B and H, and
+Test G's specification-target >= 5-observer count, remain honestly
+`BLOCKED` -- 0/7 named LLM engines are callable in this workspace, the
+same real finding EXP-HEKB006 v1.0.0 already recorded. See
+`docs/RFC_ALIGNMENT.md` ("EXP-HEKB006 v2.1.0: the Reality Consensus
+Engine") and `experiments/EXP-HEKB006/report.md`'s "v2.1.0 Addendum" for
+the full record, including two implementation bugs found and fixed during
+verification (a size-sensitive OBI ranking, and an incomplete
+false-convergence whitelist). `src/hekb` is unmodified.
+
+### Added — EXP-HEKB006 v1.0.0 cross-model epistemic invariance (blocked on observer access)
+
+`experiments/_observer_adapter.py` (the `ObserverAdapter` Protocol
+boundary for the 7 named LLM engines -- Gemma, Qwen, Llama, Mistral,
+Claude, GPT, Gemini -- plus a real, re-runnable `probe_observer_availability`
+environment check), `experiments/_cross_model_runner.py` (per-observer
+call orchestration with honest `NotImplementedError` reference stubs, no
+fabricated text), and `experiments/_cross_model_compare.py` (the new
+Cross-Model Comparison Engine: closure structure similarity, morphism
+graph edit distance, pullback/pushout identity rate, proof path
+alignment, invariant identity, completeness/latency variance -- all built
+on EXP-HEKB002's `_semantic_closure.compute_closure`, reused unmodified).
+
+A real environment probe found 0 of the 7 named observer engines callable
+in this workspace (no local model runtime, no API credential for any of
+them); per the specification's own "do not fabricate" instruction, every
+one of the specification's 7 target metrics is honestly reported `NOT
+MEASURED`, and the new comparison engine is instead verified against an
+abstract, explicitly-labeled `MechanismTest_*` fixture (not real observer
+output) that confirms it correctly discriminates a converged pair from a
+divergent one. See `docs/RFC_ALIGNMENT.md` ("EXP-HEKB006: cross-model
+epistemic invariance, blocked on observer access") and
+`experiments/EXP-HEKB006/report.md` for the full record. `src/hekb` is
+unmodified.
+
 ### Added — EXP-HEKB005 visual multi-modal ingestion (real corpus)
 
 `experiments/_visual_corpus_fetch.py` (one-time real fetcher: Wikipedia,
