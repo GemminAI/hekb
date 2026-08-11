@@ -17,6 +17,33 @@ theory rather than from application-level validation code.
 
 ---
 
+## Fresh install status
+
+Verified by cloning this repository into a clean, isolated directory
+(no pre-existing HEKB workspace, database, cache, or virtual
+environment reused):
+
+| Step | Result |
+|---|---|
+| `git clone` + `uv sync` | **PASS** |
+| `uv run pytest` | **PASS** (29 tests, includes the storage-ignorance audit) |
+| `uv run ruff check .` | **PASS** |
+| `uv run mypy .` | **FAIL** — `src/hekb` itself is clean; the failures are all in `experiments/`, which imports other, separately-installed repositories (`numpy`, `PIL`, `requests`, and the unrelated `cle`/`msr` packages) that are not part of this repository's own dependencies. This matches this repository's own current CI status on `main` (also failing, for the same reason) — it is a pre-existing upstream state, not something introduced by a fresh install. |
+| Empty-state health check (`HEKBCoreRuntime(InMemoryProjectionBackend())`, then `export_epistemic_graph()`) | **PASS** — `EpistemicGraphSnapshot(vertices=(), edges=())`, no leftover data |
+| Read/write test (the Quick start example below) | **PASS** — `2 1`, matching this README |
+
+**Not shipped, and therefore not verified by this check**: any
+persistent storage backend. Only `InMemoryProjectionBackend` (process-
+local, non-persistent) is part of the installed package — see
+"Repository boundaries" below. `experiments/` contains a private,
+non-shipped `FileProjectionBackend`/`FileConceptStore` used to validate
+deterministic-replay/idempotent-commit properties in isolation, but it
+depends on other repositories not installed by `uv sync`, and is not
+part of the `hekb` package a `pip install hekb` / `uv add hekb` user
+receives.
+
+---
+
 ## What HEKB is
 
 Concretely, HEKB models a knowledge category **K** as the category of
@@ -126,6 +153,16 @@ If you need any of the "out of scope" items, they belong to a later HEKB
 phase or to a different component of the HEXT ecosystem (SensOS,
 NVS-Kernel, or HEXT itself) — not to this repository.
 
+**SensOS integration: not yet implemented, anywhere.** As of this
+writing, no code in this repository, in `semantic_annotator`
+(`RuntimeBridge`/`LLMAnnotator`), or in the SensOS Linux Installer
+imports or connects to `hekb`. A separate, unrelated experiment
+(`sensos_integration.hekb_runtime` in `nvs-platform-runtime`) exists,
+but it wires together that monorepo's own internal `exp7100`/`exp7500`
+modules — not this package — and does not touch `semantic_annotator`
+either. Installing HEKB today gives you a standalone library only; it
+does not make HEKB reachable from a SensOS installation.
+
 ## Installation
 
 Requires Python 3.12+.
@@ -209,6 +246,11 @@ uv run pytest              # tests, including the storage-ignorance audit
 uv run ruff check .        # lint
 uv run mypy .              # type check
 ```
+
+`mypy .` currently reports errors under `experiments/` (missing stubs
+for other repositories' packages, not part of this repo's own
+dependencies) — see "Fresh install status" above. `src/hekb` itself is
+mypy-clean.
 
 ## License
 
